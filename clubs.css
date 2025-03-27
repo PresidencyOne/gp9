@@ -36,7 +36,7 @@ body {
     left: 0;
     /* width: 100%; */
     z-index: 1000;
-    background: #28282B; /* Ensures visibility */
+    background: #290b1a; /* Ensures visibility */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds slight shadow */
 }
 
@@ -149,7 +149,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 51, 102, 0.8);
+    background: rgba(102, 0, 59, 0.8);
     color: white;
     padding: 10px 15px;
     display: flex;
