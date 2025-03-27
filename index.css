@@ -69,7 +69,7 @@ body {
     left: 0;
     /* width: 100%; */
     z-index: 1000;
-    background: black; /* Ensures visibility */
+    background: #290b1a; /* Ensures visibility */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds slight shadow */
 }
 .logo img {
@@ -201,17 +201,17 @@ footer {
 }
 
 .slide:nth-child(1) { 
-    background-image: url('topp1.jpg');
+    background-image: url('pu22.jpg');
     animation-delay: 0s;
 }
 
 .slide:nth-child(2) { 
-    background-image: url('pu2.jpg');
+    background-image: url('pu22.jpg');
     animation-delay: 4s;
 }
 
 .slide:nth-child(3) { 
-    background-image: url('pu.jpg');
+    background-image: url('pu22.jpg');
     animation-delay: 8s;
 }
 
@@ -275,7 +275,7 @@ footer {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: #3b4b6a;
+    background-color: #7b5a6b;
     padding: 20px;
     border-radius: 10px;
     max-width: 90%;
@@ -331,7 +331,7 @@ footer {
 
 .icon-menu a {
     text-decoration: none;
-    background-color: #000000;
+    background-color: #290b1a;
     padding: 20px;
     width: 55px;
     text-align: center;
@@ -344,7 +344,7 @@ footer {
 }
 
 .icon-menu a:hover {
-    background-color: #004080;
+    background-color: #83355c;
     transform: scale(1.1);
 }
 
@@ -354,7 +354,7 @@ footer {
 
 
 .notification-box {
-    z-index: -1;
+    z-index: 1;
     position:absolute;
     bottom: -1000px; 
     right: 20px;
@@ -374,7 +374,7 @@ footer {
 }
 
 .notification-header {
-    background: linear-gradient(to bottom, #0a2a4a, #0a2a4a);
+    background: #290b1a;
     color: #fff;
     text-align: center;
     padding: 10px;
