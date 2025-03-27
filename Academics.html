@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        .option {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #ddd;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .option:hover {
+            background: #ccc;
+        }
+        .correct {
+            background-color: green !important;
+            color: white;
+        }
+        .wrong {
+            background-color: red !important;
+            color: white;
+        }
+        .score {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #quiz, #summary {
+            display: none;
+        }
+        #back-btn {
+            background: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Subject Selection -->
+        <div id="subject-selection">
+            <h2>Select a Subject</h2>
+            <button onclick="startQuiz('DSA')">Data Structures & Algorithms</button>
+            <button onclick="startQuiz('CN')">Computer Networks</button>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz">
+            <h2 id="question">Loading Question...</h2>
+            <div id="options"></div>
+            <button id="next" onclick="loadQuestion()">Next Question</button>
+            <p class="score">Score: <span id="score">0</span></p>
+            <button id="back-btn" onclick="goBack()">🔙 Back to Subjects</button>
+        </div>
+
+        <!-- Summary Section -->
+        <div id="summary">
+            <h2>Quiz Summary</h2>
+            <div id="summary-content"></div>
+            <p class="score">Final Score: <span id="final-score">0</span> / 10</p>
+            <button onclick="restartQuiz()">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = {
+            DSA: [
+                { q: "What is the time complexity of binary search?", a: ["O(n)", "O(log n)", "O(n log n)", "O(1)"], correct: "O(log n)" },
+                { q: "Which data structure is used for LIFO operations?", a: ["Queue", "Stack", "Array", "Linked List"], correct: "Stack" },
+                { q: "What is the worst-case complexity of Quick Sort?", a: ["O(n)", "O(n log n)", "O(n^2)", "O(log n)"], correct: "O(n^2)" }
+            ],
+            CN: [
+                { q: "What is the default subnet mask for a Class C IP address?", a: ["255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.255"], correct: "255.255.255.0" },
+                { q: "Which protocol is used for secure data transmission over the internet?", a: ["HTTP", "HTTPS", "FTP", "SMTP"], correct: "HTTPS" },
+                { q: "Which OSI layer is responsible for routing?", a: ["Physical", "Network", "Data Link", "Transport"], correct: "Network" }
+            ]
+        };
+
+        let currentSubject = "";
+        let usedQuestions = [];
+        let score = 0;
+
+        function startQuiz(subject) {
+            currentSubject = subject;
+            usedQuestions = [];
+            score = 0;
+            document.getElementById("score").innerText = score;
+            document.getElementById("subject-selection").style.display = "none";
+            document.getElementById("quiz").style.display = "block";
+            loadQuestion();
+        }
+
+        function getRandomQuestion() {
+            if (usedQuestions.length === questions[currentSubject].length) {
+                showSummary();
+                return null;
+            }
+
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * questions[currentSubject].length);
+            } while (usedQuestions.some(q => q.index === randomIndex));
+
+            const question = questions[currentSubject][randomIndex];
+            usedQuestions.push({ index: randomIndex, question: question, selected: null });
+            return question;
+        }
+
+        function loadQuestion() {
+            document.getElementById("next").style.display = "none";
+            document.getElementById("summary").style.display = "none";
+
+            const questionData = getRandomQuestion();
+            if (!questionData) return;
+
+            document.getElementById("question").innerText = questionData.q;
+
+            const optionsContainer = document.getElementById("options");
+            optionsContainer.innerHTML = "";
+
+            questionData.a.forEach(option => {
+                const button = document.createElement("button");
+                button.innerText = option;
+                button.classList.add("option");
+                button.onclick = () => checkAnswer(button, questionData.correct);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(button, correctAnswer) {
+            const allOptions = document.querySelectorAll(".option");
+            allOptions.forEach(option => option.disabled = true);
+
+            const selectedAnswer = button.innerText;
+            usedQuestions[usedQuestions.length - 1].selected = selectedAnswer;
+
+            if (selectedAnswer === correctAnswer) {
+                button.classList.add("correct");
+                score++;
+                document.getElementById("score").innerText = score;
+            } else {
+                button.classList.add("wrong");
+                allOptions.forEach(option => {
+                    if (option.innerText === correctAnswer) option.classList.add("correct");
+                });
+            }
+            document.getElementById("next").style.display = "inline-block";
+        }
+
+        function showSummary() {
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("summary").style.display = "block";
+
+            document.getElementById("final-score").innerText = score;
+
+            const summaryContent = document.getElementById("summary-content");
+            summaryContent.innerHTML = "";
+
+            usedQuestions.forEach(({ question, selected }) => {
+                const div = document.createElement("div");
+                div.classList.add("summary-item");
+                div.innerHTML = `<strong>${question.q}</strong><br>
+                Your Answer: <span class="${selected === question.correct ? 'correct-answer' : 'wrong-answer'}">${selected || "No Answer"}</span><br>
+                Correct Answer: <span class="correct-answer">${question.correct}</span>`;
+                summaryContent.appendChild(div);
+            });
+        }
+
+        function restartQuiz() {
+            document.getElementById("summary").style.display = "none";
+            document.getElementById("subject-selection").style.display = "block";
+        }
+
+        function goBack() {
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("subject-selection").style.display = "block";
+        }
+    </script>
+</body>
+</html>
