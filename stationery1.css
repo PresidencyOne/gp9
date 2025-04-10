@@ -5,11 +5,97 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.logo img {
+    height: 60px;
+    opacity:1;
+}
+.navbar {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index:1000;
+    /* background: black; */
+}
+
+.navbar.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* width: 100%; */
+    z-index: 1000;
+    background: #290b1a; /* Ensures visibility */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds slight shadow */
+}
+
+.logo img {
+    height: 60px;
+}
+.hamburger {
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.nav-links li {
+    display: inline;
+}
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.nav-links a:hover {
+    color: orange;
+}
+
+
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        color: white;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+    }
+    .nav-links a {
+        color: white;
+        display: block;
+    }
+}
+
+
+
 body {
     font-family: 'Open Sans', sans-serif;
     background: #dce6f1 url('https://www.transparenttextures.com/patterns/paper-fibers.png');
     margin: 0;
-    padding: 40px 20px;
     color: #3d2b1f;
   }
 

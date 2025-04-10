@@ -8,6 +8,43 @@
 
 </head>
 <body>
+
+
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+           <a href="index.html"> <img src="logo.png" alt="Presidency Logo"> </a>
+        </div>
+        <span class="hamburger">&#9776;</span>
+        <ul class="nav-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Fest</a></li>
+            <li><a href="#">Clubs</a></li>
+            <li><a href="#">Cafes</a></li>
+            <li><a href="#">Stationary</a></li>
+            <li><a href="#">Join Quiz</a></li>
+            <li><a href="#">Healthcare</a></li>
+        </ul>
+</nav>
+
+ 
+<script>         /* This is for navbar scrolling. */
+    window.addEventListener('scroll', function() {
+        var navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+</script>
+
+
+<script>
+    document.querySelector(".hamburger").addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.toggle("active");
+    });
+</script>
+
   <div class="container">
     <h1>Stationary 1</h1>
     <div class="search-box">
