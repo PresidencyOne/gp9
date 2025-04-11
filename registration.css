@@ -1,8 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #e0f7fa, #fce4ec);
+    font-family: "Lucida Console", "Courier New", monospace;
+    background: #fce4ec;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,7 @@ body {
   }
   
   .container h1 {
-    color: #1d3557;
+    color: #862fa9;
     margin-bottom: 25px;
   }
   
@@ -35,7 +35,7 @@ body {
   .reg-form textarea {
     padding: 12px 15px;
     border-radius: 10px;
-    border: 2px solid #1d3557;
+    border: 2px solid #3f0a4c;
     font-size: 1rem;
     outline: none;
     transition: 0.3s;
@@ -43,11 +43,11 @@ body {
   
   .reg-form input:focus,
   .reg-form textarea:focus {
-    border-color: #2a9d8f;
+    border-color: #ad147a;
   }
   
   .reg-form button {
-    background-color: #e63946;
+    background-color: #e85d68;
     color: #fff;
     padding: 12px 20px;
     border: none;
@@ -58,7 +58,7 @@ body {
   }
   
   .reg-form button:hover {
-    background-color: #d62828;
+    background-color: #232020;
     transform: scale(1.05);
   }
   
