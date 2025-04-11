@@ -120,23 +120,7 @@ body {
     color: #001F3F;
 }
 
-/* Footer */
-footer {
-    background: black;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-.footer-links a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-}
-.social-icons a {
-    color: white;
-    margin: 0 10px;
-    font-size: 20px;
-}
+
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
@@ -569,9 +553,12 @@ footer {
     75% { transform: rotate(-5deg); }
 }
 
+/* Footer */
+
 
 footer {
     background-color: #581738;
+    color: white;
     padding: 60px 80px 30px;
     display: flex;
     flex-wrap: wrap;
@@ -691,6 +678,18 @@ footer {
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
+
+  .footer-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
   @media (max-width: 768px) {
     .gallery {
       grid-template-columns: repeat(2, 1fr);
