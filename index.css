@@ -571,8 +571,8 @@ footer {
 
 
 footer {
-    background-color: #0c3c44;
-    padding: 60px 20px 30px;
+    background-color: #581738;
+    padding: 60px 80px 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -630,6 +630,20 @@ footer {
     border-radius: 10px;
     object-fit: cover;
   }
+  .footer-col button{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #7c8036;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .footer-col button:hover {
+    background-color: white;
+    color: #531738;
+  }
   .newsletter input {
     padding: 10px;
     width: 70%;
@@ -664,7 +678,7 @@ footer {
   .scroll-top {
     position: fixed;
     right: 20px;
-    bottom: 20px;
+    bottom: 80px;
     width: 60px;
     height: 60px;
     background-color: #ff5722;
@@ -692,30 +706,32 @@ footer {
     }
   }
 
+  @media (max-width: 400px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+    .newsletter input {
+      width: 100%;
+      margin-bottom: 10px;
+      text-align: center;
+      align-items: center;
+    }
+    .footer-col {
+        width: 100%;
+        text-align: center;
+    }
+  }
+
 
 
 .footer-bottom {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 14px;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- */
 
 
 
