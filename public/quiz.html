@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stylish Quiz App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: Arial, sans-serif; */
+}
+.logo img {
+    height: 60px;
+    opacity:1;
+}
+body {
+    /* font-family: Arial, sans-serif; */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(#abb8b2,white);
+    /* height: 2000px; */
+}
+.navbar {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index:1000;
+    /* background: black; */
+}
+
+.navbar.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* width: 100%; */
+    z-index: 1000;
+    background: #290b1a; /* Ensures visibility */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds slight shadow */
+}
+
+.logo img {
+    height: 60px;
+}
+.hamburger {
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.nav-links li {
+    display: inline;
+}
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.nav-links a:hover {
+    color: orange;
+}
+
+
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    hr {
+        display: none;
+    }
+    .top_bar {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+        color: white;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+    }
+    .nav-links a {
+        color: white;
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .top_bar {
+        font-size: 12px;
+    }
+    .card {
+        width: 90%;
+    }
+}
+
+
+
+
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      padding: 35px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      background: url('https://cdn-icons-png.flaticon.com/512/3135/3135715.png') no-repeat center/contain;
+      opacity: 0.08;
+      z-index: 0;
+    }
+
+    h2 {
+      color: #222;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 14px 28px;
+      margin: 12px 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      background-image: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-image: linear-gradient(135deg, #5a67d8, #6b46c1);
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      margin: 12px 0;
+      padding: 14px 20px;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      background: #e3eafc;
+      font-size: 17px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .option:hover {
+      background: #d4ddf8;
+    }
+
+    .correct {
+      background-color: #38a169 !important;
+      color: white;
+      border-color: #38a169;
+    }
+
+    .wrong {
+      background-color: #e53e3e !important;
+      color: white;
+      border-color: #e53e3e;
+    }
+
+    .score {
+      font-size: 20px;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    #quiz, #summary {
+      display: none;
+    }
+
+    .summary-item {
+      margin: 15px 0;
+      padding: 15px;
+      background: #fff;
+      border-left: 6px solid #667eea;
+      border-radius: 10px;
+      text-align: left;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .correct-answer {
+      color: #38a169;
+      font-weight: bold;
+    }
+
+    .wrong-answer {
+      color: #e53e3e;
+      font-weight: bold;
+    }
+
+    .subject-image {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 40px 20px;
+        padding: 20px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    footer {
+    margin-top: 40px;
+    background-color: #581738;
+    color: white;
+    padding: 60px 80px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .footer-col {
+    flex: 1 1 200px;
+  }
+  .footer-col h3 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: cursive;
+  }
+  .footer-col p,
+  .footer-col a,
+  .footer-col li {
+    color: #bbb;
+    text-decoration: none;
+    list-style: none;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 16px;
+  }
+  .footer-col i {
+    margin-right: 10px;
+  }
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  .social-icons a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    transition: 0.3s;
+  }
+  .social-icons a:hover {
+    background-color: #ff5722;
+    border-color: #ff5722;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .gallery img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  .footer-col button{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #e76138;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .footer-col button:hover {
+    background-color: white;
+    color: #531738;
+  }
+  .newsletter input {
+    padding: 10px;
+    width: 70%;
+    max-width: 250px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  .newsletter button {
+    padding: 10px 20px;
+    background-color: #e76138;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .newsletter button:hover {
+    background-color: #e64a19;
+  }
+
+  .footer-bottom a {
+    color: white;
+    text-decoration: underline;
+  }
+  .footer-nav {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .scroll-top {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    width: 60px;
+    height: 60px;
+    background-color: #ff5722;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .footer-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 500px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+    .newsletter input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+    .newsletter input {
+      width: 100%;
+      margin-bottom: 10px;
+      text-align: center;
+      align-items: center;
+    }
+    .footer-col {
+        width: 100%;
+        text-align: center;
+    }
+  }
+
+
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+
+  </style>
+</head>
+<body>
+<img src="quiz1.png" width="100%">
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+        <img src="logo.png" alt="Presidency Logo">
+    </div>
+    <span class="hamburger">&#9776;</span>
+    <ul class="nav-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Fest</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="cafe.html">Cafes</a></li>
+        <li><a href="stationery.html">Stationery</a></li>
+        <li><a href="#">Join Quiz</a></li>
+        <li><a href="#">Healthcare</a></li>
+    </ul>
+</nav>
+
+
+<script>         /* This is for navbar scrolling. */
+window.addEventListener('scroll', function() {
+    var navbar = document.getElementById("navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+</script>
+
+
+<script>
+document.querySelector(".hamburger").addEventListener("click", function() {
+    document.querySelector(".nav-links").classList.toggle("active");
+});
+</script>
+
+  <div class="container">
+    <div id="subject-selection">
+      <img class="subject-image" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Subject Icon">
+      <h2>Select a Subject</h2>
+      <button onclick="startQuiz('DSA')">Data Structures & Algorithms</button>
+      <button onclick="startQuiz('CN')">Computer Networks</button>
+    </div>
+
+    <div id="quiz">
+      <h2 id="question">Loading Question...</h2>
+      <div id="options"></div>
+      <button id="next" onclick="loadQuestion()">Next Question</button>
+      <p class="score">Score: <span id="score">0</span></p>
+    </div>
+
+    <div id="summary">
+      <h2>Quiz Summary</h2>
+      <div id="summary-content"></div>
+      <p class="score">Final Score: <span id="final-score">0</span> / 10</p>
+      <button onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = {
+      DSA: [
+        { q: "What is the time complexity of binary search?", a: ["O(n)", "O(log n)", "O(n log n)", "O(1)"], correct: "O(log n)" },
+        { q: "Which data structure is used for LIFO operations?", a: ["Queue", "Stack", "Array", "Linked List"], correct: "Stack" },
+        { q: "What is the worst-case complexity of Quick Sort?", a: ["O(n)", "O(n log n)", "O(n^2)", "O(log n)"], correct: "O(n^2)" },
+        { q: "Which sorting algorithm has the best average-case complexity?", a: ["Bubble Sort", "Insertion Sort", "Merge Sort", "Selection Sort"], correct: "Merge Sort" },
+        { q: "Which data structure is best for implementing recursion?", a: ["Queue", "Stack", "Heap", "Graph"], correct: "Stack" }
+      ],
+      CN: [
+        { q: "What is the default subnet mask for a Class C IP address?", a: ["255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.255"], correct: "255.255.255.0" },
+        { q: "Which protocol is used for secure data transmission over the internet?", a: ["HTTP", "HTTPS", "FTP", "SMTP"], correct: "HTTPS" },
+        { q: "Which OSI layer is responsible for routing?", a: ["Physical", "Network", "Data Link", "Transport"], correct: "Network" },
+        { q: "What is the function of the transport layer in the OSI model?", a: ["Routing", "Error Detection", "End-to-End Communication", "Data Encryption"], correct: "End-to-End Communication" },
+        { q: "Which protocol is used for email transmission?", a: ["FTP", "HTTP", "SMTP", "POP3"], correct: "SMTP" }
+      ]
+    };
+
+    let currentSubject = "";
+    let usedQuestions = [];
+    let score = 0;
+
+    function startQuiz(subject) {
+      currentSubject = subject;
+      usedQuestions = [];
+      score = 0;
+      document.getElementById("score").innerText = score;
+      document.getElementById("subject-selection").style.display = "none";
+      document.getElementById("quiz").style.display = "block";
+      loadQuestion();
+    }
+
+    function getRandomQuestion() {
+      if (usedQuestions.length === questions[currentSubject].length) {
+        showSummary();
+        return null;
+      }
+
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * questions[currentSubject].length);
+      } while (usedQuestions.some(q => q.index === randomIndex));
+
+      const question = questions[currentSubject][randomIndex];
+      usedQuestions.push({ index: randomIndex, question: question, selected: null });
+      return question;
+    }
+
+    function loadQuestion() {
+      document.getElementById("next").style.display = "none";
+      document.getElementById("summary").style.display = "none";
+
+      const questionData = getRandomQuestion();
+      if (!questionData) return;
+
+      document.getElementById("question").innerText = questionData.q;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+
+      questionData.a.forEach(option => {
+        const button = document.createElement("button");
+        button.innerText = option;
+        button.classList.add("option");
+        button.onclick = () => checkAnswer(button, questionData.correct);
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    function checkAnswer(button, correctAnswer) {
+      const allOptions = document.querySelectorAll(".option");
+      allOptions.forEach(option => option.disabled = true);
+
+      const selectedAnswer = button.innerText;
+      usedQuestions[usedQuestions.length - 1].selected = selectedAnswer;
+
+      if (selectedAnswer === correctAnswer) {
+        button.classList.add("correct");
+        score++;
+        document.getElementById("score").innerText = score;
+      } else {
+        button.classList.add("wrong");
+        allOptions.forEach(option => {
+          if (option.innerText === correctAnswer) option.classList.add("correct");
+        });
+      }
+      document.getElementById("next").style.display = "inline-block";
+    }
+
+    function showSummary() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("summary").style.display = "block";
+
+      document.getElementById("final-score").innerText = score;
+      const summaryContent = document.getElementById("summary-content");
+      summaryContent.innerHTML = "";
+
+      usedQuestions.forEach(({ question, selected }) => {
+        const div = document.createElement("div");
+        div.classList.add("summary-item");
+        div.innerHTML = `<strong>${question.q}</strong><br>
+          Your Answer: <span class="${selected === question.correct ? 'correct-answer' : 'wrong-answer'}">${selected || "No Answer"}</span><br>
+          Correct Answer: <span class="correct-answer">${question.correct}</span>`;
+        summaryContent.appendChild(div);
+      });
+    }
+
+    function restartQuiz() {
+      document.getElementById("summary").style.display = "none";
+      document.getElementById("subject-selection").style.display = "block";
+    }
+  </script>
+
+<footer>
+  <div class="footer-col">
+    <h3>Get In Touch</h3>
+    <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+    <p><i class="fas fa-phone"></i> +012 345 67890</p>
+    <p><i class="fas fa-envelope"></i> info@example.com</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <div class="footer-col">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Our Services</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms & Condition</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-col">
+    <h3>Photo Gallery</h3>
+    <div class="gallery">
+      <img src="cafe.jpg" alt="gallery1">
+      <img src="cafebg.png" alt="gallery2">
+      <img src="stationery.jpg" alt="gallery3">
+      <img src="club.jpg" alt="gallery4">
+      <img src="sports.jpg" alt="gallery5">
+      <img src="health.jpg" alt="gallery6">
+    </div>
+    <button>Explore Gallery</button>
+  </div>
+
+  <div class="footer-col newsletter">
+    <h3>Newsletter</h3>
+    <p>Enter your email to get updates regularly.</p>
+    <input type="email" placeholder="Your email">
+    <button>SignUp</button>
+  </div>
+
+
+
+<div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+  <div class="footer-bottom">
+      <p>Anti Ragging | ICC | Privacy Policy | Disclaimer | Terms and Conditions | Student Grievance Redressal | Caste Based Discrimination | RTI | Feedback</p>
+      <p>&copy; 2025 All Rights Reserved by Presidency University</p>
+  </div>
+
+      <div class="footer-links">
+          <a href="#">Admissions</a>
+          <a href="#">Events</a>
+          <a href="#">Contact Us</a>
+          <a href="#">FAQs</a>
+      </div>
+      <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>© 2025 Presidency University. All rights reserved.</p>
+  </footer>
+</body>
+</html>
