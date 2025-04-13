@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background: #0d1117;
+    color: #c9d1d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+#matrix {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    background: rgba(22, 27, 34, 0.95);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.6);
+    width: 100%;
+    max-width: 600px;
+    z-index: 2;
+    animation: slideIn 1s ease-out;
+}
+
+.code-animation {
+    background: #1c2526;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    animation: pulse 3s infinite;
+}
+
+.code-animation pre code {
+    color: #f8f8f2;
+    font-size: 0.9em;
+}
+
+h2 {
+    text-align: center;
+    color: #58a6ff;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    animation: glow 2s ease-in-out infinite;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #c9d1d9;
+    font-size: 1.1em;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #1c2526;
+    color: #c9d1d9;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.8);
+    background: #252d35;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: #58a6ff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #1f6feb;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(88, 166, 255, 0.5);
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #58a6ff; }
+    50% { text-shadow: 0 0 20px #58a6ff, 0 0 30px #58a6ff; }
+    100% { text-shadow: 0 0 5px #58a6ff; }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(88, 166, 255, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(88, 166, 255, 0.8); }
+    100% { box-shadow: 0 0 10px rgba(88, 166, 255, 0.5); }
+}

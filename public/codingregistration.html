@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presidency University Coding Club - Registration</title>
+    <link rel="stylesheet" href="codingregistration.css">
+</head>
+<body>
+    <div class="canvas-container">
+        <canvas id="matrix"></canvas>
+    </div>
+    <div class="container">
+        <div class="code-animation"></div>
+        <h2>Register for Coding Club</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" name="department" required>
+                    <option value="">Select Department</option>
+                    <option value="CSE">Computer Science</option>
+                    <option value="ECE">Electronics</option>
+                    <option value="ME">Mechanical</option>
+                    <option value="CE">Civil</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="skills">Coding Skills/Inter10pxInterests</label>
+                <input type="text" id="skills" name="skills" placeholder="e.g., Python, JavaScript, C++">
+            </div>
+            <button type="submit">Join Now</button>
+        </form>
+    </div>
+    <script src="codingregistration.js"></script>
+</body>
+</html>
