@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presidency University Gaming Club Registration</title>
+    <link rel="stylesheet" href="gamingregistration.css">
+</head>
+<body>
+    <div class="background-effects" id="particles"></div>
+    <div class="container">
+        <h2>Gaming Club Registration</h2>
+        <form id="registrationForm">
+            <div class="input-box">
+                <input type="text" id="name" required>
+                <label for="name">Full Name</label>
+                <div class="error" id="nameError">Please enter a valid name</div>
+            </div>
+            <div class="input-box">
+                <input type="email" id="email" required>
+                <label for="email">Email</label>
+                <div class="error" id="emailError">Please enter a valid email</div>
+            </div>
+            <div class="input-box">
+                <select id="game" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="valorant">Valorant</option>
+                    <option value="fortnite">Fortnite</option>
+                    <option value="csgo">CS:GO</option>
+                    <option value="minecraft">Minecraft</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="game">Favorite Game</label>
+                <div class="error" id="gameError">Please select a game</div>
+            </div>
+            <div class="input-box">
+                <input type="text" id="studentId" required>
+                <label for="studentId">Student ID</label>
+                <div class="error" id="studentIdError">Please enter a valid Student ID</div>
+            </div>
+            <button type="submit">Join the Battle!</button>
+        </form>
+    </div>
+    <script src="gamingregistration.js"></script>
+</body>
+</html>
