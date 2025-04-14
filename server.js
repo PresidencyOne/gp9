@@ -101,10 +101,6 @@ app.post('/submit-gaming-registration', async (req, res) => {
   }
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
 
 
 app.post('/submit-cricket-registration', async (req, res) => {
@@ -117,4 +113,9 @@ app.post('/submit-cricket-registration', async (req, res) => {
     console.error('❌ Error saving cricket registration:', err);
     res.status(500).send('Failed to submit form');
   }
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
