@@ -9,6 +9,8 @@ const fs = require('fs');
 // Models
 const LostFound = require('./models/LostFound');
 const GamingRegistration = require('./models/GamingRegistration');
+const CricketRegistration = require('./models/CricketRegistration');
+
 
 const app = express();
 const PORT = 3000;
@@ -102,4 +104,17 @@ app.post('/submit-gaming-registration', async (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
+});
+
+
+app.post('/submit-cricket-registration', async (req, res) => {
+  try {
+    const registration = new CricketRegistration(req.body);
+    await registration.save();
+    console.log('✅ Cricket registration saved:', registration);
+    res.send('Thanks for registering with the Cricket Club!');
+  } catch (err) {
+    console.error('❌ Error saving cricket registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
 });
