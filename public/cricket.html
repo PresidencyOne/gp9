@@ -1,3 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cricket Registration</title>
+  <link rel="stylesheet" href="games.css">
+</head>
+<body>
+  <h1 class="gallery-heading">Cricket Moments Gallery</h1>
+
+  <div class="gallery-container">
+    <button class="arrow left">&#10094;</button>
+    <div class="gallery">
+      <img src="sports.jpg" class="gallery-img active" alt="Image 1">
+      <img src="club.jpg" class="gallery-img" alt="Image 2">
+      <img src="curriculam.jpg" class="gallery-img" alt="Image 3">
+      <img src="cafe.jpg" class="gallery-img" alt="Image 1">
+      <img src="cafebg.png" class="gallery-img" alt="Image 2">
+      <img src="stat.jpg" class="gallery-img" alt="Image 3">
+      <img src="sports.jpg" class="gallery-img" alt="Image 2">
+      <img src="topp1.jpg" class="gallery-img" alt="Image 3">
+    </div>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <section class="form-section">
+    <h2>Register Now!!</h2>
+    <form>
+      <label>Full Name:</label>
+      <input type="text" placeholder="Enter your full name" required>
+
+      <label>Email:</label>
+      <input type="email" placeholder="Enter your email" required>
+
+      <label>Phone Number:</label>
+      <input type="tel" placeholder="Enter your phone number" required>
+
+      <label>Team Name:</label>
+      <input type="text" placeholder="Enter your team name">
+
+      <label>Preferred Role:</label>
+      <select required>
+        <option value="">Select Role</option>
+        <option value="batsman">Batsman</option>
+        <option value="bowler">Bowler</option>
+        <option value="all-rounder">All-Rounder</option>
+        <option value="wicket-keeper">Wicket Keeper</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <script>
+    const images = document.querySelectorAll('.gallery-img');
+    const leftArrow = document.querySelector('.left');
+    const rightArrow = document.querySelector('.right');
+    let current = 0;
+
+    function updateGallery(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+    }
+
+    leftArrow.onclick = () => {
+      current = (current - 1 + images.length) % images.length;
+      updateGallery(current);
+    };
+
+    rightArrow.onclick = () => {
+      current = (current + 1) % images.length;
+      updateGallery(current);
+    };
+  </script>
+</body>
+</html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
