@@ -21,6 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register button click effect
     const registerBtn = document.querySelector('.register-btn');
     registerBtn.addEventListener('click', () => {
-        alert('Thank you for your interest! Registration form coming soon!');
+       
     });
 });
