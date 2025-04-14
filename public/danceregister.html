@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Presidency University Dance Club</title>
+    <link rel="stylesheet" href="danceregister.css">
+    <script src="danceregister.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1 class="bounce">Join the Dance Party!</h1>
+        <p class="slogan slide-in">Presidency University Dance Club Registration</p>
+    </header>
+
+    <section class="form-container">
+        <h2 class="pop-in">Sign Up to Groove!</h2>
+        <form id="danceForm" class="dance-form fade-in">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="dance-style">Favorite Dance Style</label>
+                <select id="dance-style" name="dance-style" required>
+                    <option value="" disabled selected>Pick your vibe!</option>
+                    <option value="bollywood">Bollywood</option>
+                    <option value="hip-hop">Hip-Hop</option>
+                    <option value="contemporary">Contemporary</option>
+                    <option value="classical">Classical</option>
+                    <option value="freestyle">Freestyle</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="experience">Dance Experience</label>
+                <textarea id="experience" name="experience" rows="4" placeholder="Tell us about your dance journey!"></textarea>
+            </div>
+            <button type="submit" class="submit-btn pulse">Join the Club!</button>
+        </form>
+    </section>
+
+    <footer>
+        <p class="fade-in">© 2025 Presidency University Dance Club. Let’s Dance!</p>
+    </footer>
+</body>
+</html>
