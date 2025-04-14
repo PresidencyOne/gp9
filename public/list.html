@@ -157,7 +157,7 @@
 
           card.innerHTML = `
             <button class="delete-btn" onclick="deleteItem('${item._id}')">×</button>
-            <img src="${item.image}" alt="Item Image">
+            <img src="/uploads/${item.image}" alt="Item Image" />
             <h3>${item.type} Item</h3>
             <p><strong>Name:</strong> ${item.name}</p>
             <p><strong>Email:</strong> ${item.email}</p>

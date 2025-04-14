@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Presidency University Singing Club</title>
+    <link rel="stylesheet" href="singregister.css">
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <img src="dance1.jpeg" alt="Registration Hero" class="hero-image">
+            <div class="hero-text">
+                <h1>Join the Singing Club</h1>
+                <p>Be a part of our musical journey!</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="registration-form">
+        <h2>Register Now</h2>
+        <form id="registration-form" class="fade-in">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+                <label for="vocal-range">Singing Style</label>
+                <select id="vocal-range" name="vocal-range">
+                    <option value="">Select your Singing Style</option>
+                    <option value="soprano">Classical</option>
+                    <option value="alto">Pop</option>
+                    <option value="tenor">Bollywood</option>
+                    <option value="bass">Hindustani Classical</option>
+                    <option value="not-sure">Not Sure</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="experience">Singing Experience</label>
+                <textarea id="experience" name="experience" placeholder="Tell us about your singing background"></textarea>
+            </div>
+            <button type="submit" class="submit-btn pulse">Submit</button>
+        </form>
+    </section>
+
+    <section class="info">
+        <h2>Why Join Us?</h2>
+        <p class="fade-in">Become a part of the Presidency University Singing Club and unlock a world of musical opportunities! From workshops with renowned artists to performing at university events, our club offers a platform to hone your skills and share your passion for music.</p>
+        <p class="fade-in">No matter your experience level, we welcome you to join our vibrant community. Let’s create harmony together!</p>
+    </section>
+
+    <footer>
+        <p>Presidency University Singing Club © 2025</p>
+    </footer>
+
+    <script src="singregister.js"></script>
+</body>
+</html>
