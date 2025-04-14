@@ -14,7 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB connection
-mongoose.connect('mongodb://127.0.0.1:27017/lostfound', {
+
+
+
+mongoose.connect('mongodb+srv://PresidencyOne:PresidencyOne9@cluser0.lx8yyei.mongodb.net/LostFound?retryWrites=true&w=majority&appName=cluser0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log('MongoDB Connected'));
