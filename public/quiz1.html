@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stylish Quiz App</title>
+  <link rel="stylesheet" href="quiz1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<img src="quiz1.png" width="100%">
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+        <img src="logo.png" alt="Presidency Logo">
+    </div>
+    <span class="hamburger">&#9776;</span>
+    <ul class="nav-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Fest</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="cafe.html">Cafes</a></li>
+        <li><a href="stationery.html">Stationery</a></li>
+        <li><a href="#">Join Quiz</a></li>
+        <li><a href="#">Healthcare</a></li>
+    </ul>
+</nav>
+
+
+<script>         /* This is for navbar scrolling. */
+window.addEventListener('scroll', function() {
+    var navbar = document.getElementById("navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+</script>
+
+
+<script>
+document.querySelector(".hamburger").addEventListener("click", function() {
+    document.querySelector(".nav-links").classList.toggle("active");
+});
+</script>
+
+  <div class="container">
+    <div id="subject-selection">
+      <img class="subject-image" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Subject Icon">
+      <h2>Select a Subject</h2>
+      <button onclick="startQuiz('DSA')">Data Structures & Algorithms</button>
+      <button onclick="startQuiz('CN')">Computer Networks</button>
+    </div>
+
+    <div id="quiz">
+      <h2 id="question">Loading Question...</h2>
+      <div id="options"></div>
+      <button id="next" onclick="loadQuestion()">Next Question</button>
+      <p class="score">Score: <span id="score">0</span></p>
+    </div>
+
+    <div id="summary">
+      <h2>Quiz Summary</h2>
+      <div id="summary-content"></div>
+      <p class="score">Final Score: <span id="final-score">0</span> / 10</p>
+      <button onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = {
+      DSA: [
+        { q: "What is the time complexity of binary search?", a: ["O(n)", "O(log n)", "O(n log n)", "O(1)"], correct: "O(log n)" },
+        { q: "Which data structure is used for LIFO operations?", a: ["Queue", "Stack", "Array", "Linked List"], correct: "Stack" },
+        { q: "What is the worst-case complexity of Quick Sort?", a: ["O(n)", "O(n log n)", "O(n^2)", "O(log n)"], correct: "O(n^2)" },
+        { q: "Which sorting algorithm has the best average-case complexity?", a: ["Bubble Sort", "Insertion Sort", "Merge Sort", "Selection Sort"], correct: "Merge Sort" },
+        { q: "Which data structure is best for implementing recursion?", a: ["Queue", "Stack", "Heap", "Graph"], correct: "Stack" }
+      ],
+      CN: [
+        { q: "What is the default subnet mask for a Class C IP address?", a: ["255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.255"], correct: "255.255.255.0" },
+        { q: "Which protocol is used for secure data transmission over the internet?", a: ["HTTP", "HTTPS", "FTP", "SMTP"], correct: "HTTPS" },
+        { q: "Which OSI layer is responsible for routing?", a: ["Physical", "Network", "Data Link", "Transport"], correct: "Network" },
+        { q: "What is the function of the transport layer in the OSI model?", a: ["Routing", "Error Detection", "End-to-End Communication", "Data Encryption"], correct: "End-to-End Communication" },
+        { q: "Which protocol is used for email transmission?", a: ["FTP", "HTTP", "SMTP", "POP3"], correct: "SMTP" }
+      ]
+    };
+
+    let currentSubject = "";
+    let usedQuestions = [];
+    let score = 0;
+
+    function startQuiz(subject) {
+      currentSubject = subject;
+      usedQuestions = [];
+      score = 0;
+      document.getElementById("score").innerText = score;
+      document.getElementById("subject-selection").style.display = "none";
+      document.getElementById("quiz").style.display = "block";
+      loadQuestion();
+    }
+
+    function getRandomQuestion() {
+      if (usedQuestions.length === questions[currentSubject].length) {
+        showSummary();
+        return null;
+      }
+
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * questions[currentSubject].length);
+      } while (usedQuestions.some(q => q.index === randomIndex));
+
+      const question = questions[currentSubject][randomIndex];
+      usedQuestions.push({ index: randomIndex, question: question, selected: null });
+      return question;
+    }
+
+    function loadQuestion() {
+      document.getElementById("next").style.display = "none";
+      document.getElementById("summary").style.display = "none";
+
+      const questionData = getRandomQuestion();
+      if (!questionData) return;
+
+      document.getElementById("question").innerText = questionData.q;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+
+      questionData.a.forEach(option => {
+        const button = document.createElement("button");
+        button.innerText = option;
+        button.classList.add("option");
+        button.onclick = () => checkAnswer(button, questionData.correct);
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    function checkAnswer(button, correctAnswer) {
+      const allOptions = document.querySelectorAll(".option");
+      allOptions.forEach(option => option.disabled = true);
+
+      const selectedAnswer = button.innerText;
+      usedQuestions[usedQuestions.length - 1].selected = selectedAnswer;
+
+      if (selectedAnswer === correctAnswer) {
+        button.classList.add("correct");
+        score++;
+        document.getElementById("score").innerText = score;
+      } else {
+        button.classList.add("wrong");
+        allOptions.forEach(option => {
+          if (option.innerText === correctAnswer) option.classList.add("correct");
+        });
+      }
+      document.getElementById("next").style.display = "inline-block";
+    }
+
+    function showSummary() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("summary").style.display = "block";
+
+      document.getElementById("final-score").innerText = score;
+      const summaryContent = document.getElementById("summary-content");
+      summaryContent.innerHTML = "";
+
+      usedQuestions.forEach(({ question, selected }) => {
+        const div = document.createElement("div");
+        div.classList.add("summary-item");
+        div.innerHTML = `<strong>${question.q}</strong><br>
+          Your Answer: <span class="${selected === question.correct ? 'correct-answer' : 'wrong-answer'}">${selected || "No Answer"}</span><br>
+          Correct Answer: <span class="correct-answer">${question.correct}</span>`;
+        summaryContent.appendChild(div);
+      });
+    }
+
+    function restartQuiz() {
+      document.getElementById("summary").style.display = "none";
+      document.getElementById("subject-selection").style.display = "block";
+    }
+  </script>
+
+<footer>
+  <div class="footer-col">
+    <h3>Get In Touch</h3>
+    <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+    <p><i class="fas fa-phone"></i> +012 345 67890</p>
+    <p><i class="fas fa-envelope"></i> info@example.com</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <div class="footer-col">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Our Services</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms & Condition</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-col">
+    <h3>Photo Gallery</h3>
+    <div class="gallery">
+      <img src="cafe.jpg" alt="gallery1">
+      <img src="cafebg.png" alt="gallery2">
+      <img src="stationery.jpg" alt="gallery3">
+      <img src="club.jpg" alt="gallery4">
+      <img src="sports.jpg" alt="gallery5">
+      <img src="health.jpg" alt="gallery6">
+    </div>
+    <button>Explore Gallery</button>
+  </div>
+
+  <div class="footer-col newsletter">
+    <h3>Newsletter</h3>
+    <p>Enter your email to get updates regularly.</p>
+    <input type="email" placeholder="Your email">
+    <button>SignUp</button>
+  </div>
+
+
+
+<div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+  <div class="footer-bottom">
+      <p>Anti Ragging | ICC | Privacy Policy | Disclaimer | Terms and Conditions | Student Grievance Redressal | Caste Based Discrimination | RTI | Feedback</p>
+      <p>&copy; 2025 All Rights Reserved by Presidency University</p>
+  </div>
+
+      <div class="footer-links">
+          <a href="#">Admissions</a>
+          <a href="#">Events</a>
+          <a href="#">Contact Us</a>
+          <a href="#">FAQs</a>
+      </div>
+      <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>© 2025 Presidency University. All rights reserved.</p>
+  </footer>
+</body>
+</html>
