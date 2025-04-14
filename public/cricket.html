@@ -52,20 +52,18 @@ document.querySelector(".hamburger").addEventListener("click", function() {
 
   <h1 class="gallery-heading">Cricket Moments Gallery🏏</h1>
 
-  <div class="gallery-container">
-    <button class="arrow left">&#10094;</button>
-    <div class="gallery1">
-      <img src="sports.jpg" class="gallery-img active" alt="Image 1">
-      <img src="club.jpg" class="gallery1-img" alt="Image 2">
-      <img src="curriculam.jpg" class="gallery1-img" alt="Image 3">
-      <img src="cafe.jpg" class="gallery1-img" alt="Image 1">
-      <img src="cafebg.png" class="gallery1-img" alt="Image 2">
-      <img src="stat.jpg" class="gallery1-img" alt="Image 3">
-      <img src="sports.jpg" class="gallery1-img" alt="Image 2">
-      <img src="topp1.jpg" class="gallery1-img" alt="Image 3">
+<div class="image-gallery-container">
+        <div class="image-gallery" id="imageGallery">
+            <img src="cafe.jpg" alt="Cricket Action 1" class="gallery-image">
+            <img src="cafe.jpg" alt="Cricket Players 2" class="gallery-image">
+            <img src="cafe.jpg" alt="Cricket Stadium 3" class="gallery-image">
+            <img src="https://via.placeholder.com/800x400/dc3545/ffffff?Text=Cricket+Gear+4" alt="Cricket Gear 4" class="gallery-image">
+        </div>
+        <div class="gallery-nav">
+            <button class="nav-arrow" onclick="prevImage()">&#10094;</button>
+            <button class="nav-arrow" onclick="nextImage()">&#10095;</button>
+        </div>
     </div>
-    <button class="arrow right">&#10095;</button>
-  </div>
 
   <section class="form-section">
     <h2>Register Now!!</h2>
@@ -94,29 +92,30 @@ document.querySelector(".hamburger").addEventListener("click", function() {
       <button type="submit">Submit</button>
     </form>
   </section>
+<script>
+        const imageGallery = document.getElementById('imageGallery');
+        const images = imageGallery.querySelectorAll('.gallery-image');
+        const galleryNav = document.querySelector('.gallery-nav');
+        let currentIndex = 0;
 
-  <script>
-    const images = document.querySelectorAll('.gallery1-img');
-    const leftArrow = document.querySelector('.left');
-    const rightArrow = document.querySelector('.right');
-    let current = 0;
+        function updateGallery() {
+            imageGallery.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
 
-    function updateGallery(index) {
-      images.forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-      });
-    }
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateGallery();
+        }
 
-    leftArrow.onclick = () => {
-      current = (current - 1 + images.length) % images.length;
-      updateGallery(current);
-    };
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateGallery();
+        }
 
-    rightArrow.onclick = () => {
-      current = (current + 1) % images.length;
-      updateGallery(current);
-    };
-  </script>
+        // Optional: Add auto-sliding functionality
+        // setInterval(nextImage, 3000);
+    </script>
+
 
 
 <footer>

@@ -115,6 +115,53 @@ body {
   }
 }
 
+.image-gallery-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.image-gallery {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallery-image {
+  min-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.nav-arrow {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.nav-arrow:hover {
+  opacity: 1;
+}
+
 
 /* Gallery Heading */
 .gallery-heading {
@@ -142,75 +189,7 @@ body {
   border-radius: 5px;
 }
 
-/* Gallery Container */
-.gallery-container {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 20px auto 40px;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  background: #fff;
-  padding: 10px;
-  transition: transform 0.3s;
-}
 
-.gallery-container:hover {
-  transform: scale(1.01);
-}
-
-/* Gallery Image */
-.gallery1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.gallery1-img {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: cover;
-  display: none;
-  border-radius: 10px;
-  transition: opacity 0.4s ease-in-out;
-}
-
-
-.gallery-img.active {
-  display: block;
-  opacity: 1;
-}
-
-/* Arrows */
-.arrow {
-  position: absolute;
-  top: 50%;
-  /* transform: translateY(-50%); */
-  font-size: 28px;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  border: none;
-  padding: 10px 14px;
-  cursor: pointer;
-  z-index: 2;
-  border-radius: 50%;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.arrow:hover {
-  background: rgba(0, 0, 0, 0.7);
-  transform: scale(1.1);
-}
-
-.arrow.left {
-  left: 15px;
-}
-
-.arrow.right {
-  right: 15px;
-}
 
 /* Form Section */
 .form-section {
@@ -483,3 +462,5 @@ footer {
   margin-top: 20px;
   font-size: 14px;
 }
+
+
