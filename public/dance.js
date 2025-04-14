@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register button action
     const registerBtn = document.querySelector('.register-btn');
     registerBtn.addEventListener('click', () => {
-        alert('Get ready to dance! Registration form will be live soon!');
+       
     });
 
     // Image hover effects
