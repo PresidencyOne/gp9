@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Handball Registration</title>
+  <link rel="stylesheet" href="handball.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+        <img src="logo.png" alt="Presidency Logo">
+    </div>
+    <span class="hamburger">&#9776;</span>
+    <ul class="nav-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Fest</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="cafe.html">Cafes</a></li>
+        <li><a href="stationery.html">Stationery</a></li>
+        <li><a href="#">Join Quiz</a></li>
+        <li><a href="#">Healthcare</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    window.addEventListener('scroll', function() {
+        var navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+
+    document.querySelector(".hamburger").addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.toggle("active");
+    });
+  </script>
+
+<h1 class="gallery-heading">Presidency's Handball Club 🤾</h1>
+
+  <section class="form-section">
+    <h2>Register Now!!</h2>
+    <form method="POST" action="/submit-handball-registration">
+      <label>Full Name:</label>
+      <input type="text" name="name" placeholder="Enter your full name" required>
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <label>Phone Number:</label>
+      <input type="tel" name="tel" placeholder="Enter your phone number" required>
+      <label>School:</label>
+      <input type="text"  name="school" placeholder="Enter your school">
+      <label>Preferred Role:</label>
+      <select name="role" required>
+        <option value="">Select Role</option>
+        <option value="goalkeeper">Goalkeeper</option>
+        <option value="right back">Right back</option>
+        <option value="left-back">Left-back</option>
+        <option value="center back">Center back</option>
+        <option value="right winger">Right winger</option>
+        <option value="handball coach">Handball coach</option>
+        <option value="substitutes">Substitutes</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- ✅ UPDATED IMAGE CONTAINER STRUCTURE -->
+  <div class="image-gallery-container">
+    <h1 style="text-align: center; padding:5px;">Explore Gallery!!!</h1>
+
+    <div class="image-gallery-wrapper">
+      <div class="image-gallery" id="imageGallery">
+          <img src="cafe.jpg" alt="Handball Action 1" class="gallery-image">
+          <img src="cafe.jpg" alt="Handball Players 2" class="gallery-image">
+          <img src="cafe.jpg" alt="Handball Stadium 3" class="gallery-image">
+          <img src="https://via.placeholder.com/800x400/dc3545/ffffff?Text=Cricket+Gear+4" alt="Handball Gear 4" class="gallery-image">
+      </div>
+    </div>
+    <div class="gallery-nav">
+        <button class="nav-arrow" onclick="prevImage()">&#10094;</button>
+        <button class="nav-arrow" onclick="nextImage()">&#10095;</button>
+    </div>
+  </div>
+
+  <script>
+    const imageGallery = document.getElementById('imageGallery');
+    const images = imageGallery.querySelectorAll('.gallery-image');
+    let currentIndex = 0;
+
+    function updateGallery() {
+        imageGallery.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateGallery();
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateGallery();
+    }
+  </script>
+
+  
+<footer>
+  <div class="footer-col">
+    <h3>Get In Touch</h3>
+    <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+    <p><i class="fas fa-phone"></i> +012 345 67890</p>
+    <p><i class="fas fa-envelope"></i> info@example.com</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <div class="footer-col">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Our Services</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms & Condition</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-col">
+    <h3>Photo Gallery</h3>
+    <div class="gallery">
+      <img src="cafe.jpg" alt="gallery1">
+      <img src="cafebg.png" alt="gallery2">
+      <img src="stationery.jpg" alt="gallery3">
+      <img src="club.jpg" alt="gallery4">
+      <img src="sports.jpg" alt="gallery5">
+      <img src="health.jpg" alt="gallery6">
+    </div>
+    <button>Explore Gallery</button>
+  </div>
+
+  <div class="footer-col newsletter">
+    <h3>Newsletter</h3>
+    <p>Enter your email to get updates regularly.</p>
+    <input type="email" placeholder="Your email">
+    <button>SignUp</button>
+  </div>
+
+
+
+<div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+  <div class="footer-bottom">
+      <p>Anti Ragging | ICC | Privacy Policy | Disclaimer | Terms and Conditions | Student Grievance Redressal | Caste Based Discrimination | RTI | Feedback</p>
+      <p>&copy; 2025 All Rights Reserved by Presidency University</p>
+  </div>
+
+      <div class="footer-links">
+          <a href="#">Admissions</a>
+          <a href="#">Events</a>
+          <a href="#">Contact Us</a>
+          <a href="#">FAQs</a>
+      </div>
+      <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>© 2025 Presidency University. All rights reserved.</p>
+  </footer>
+
+
+</body>
+</html>
+
