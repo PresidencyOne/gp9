@@ -1,11 +1,17 @@
+// models/CricketRegistration.js
 const mongoose = require('mongoose');
 
-const cricketSchema = new mongoose.Schema({
+const CricketRegistrationSchema = new mongoose.Schema({
   name: String,
   email: String,
-  phone: String,
   school: String,
+  roll: String,
+  phone: String,
   role: String,
-}, { timestamps: true });
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-module.exports = mongoose.model('CricketRegistration', cricketSchema);
+module.exports = mongoose.model('CricketRegistration', CricketRegistrationSchema);
