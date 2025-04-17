@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +21,6 @@ body {
     background: rgba(255, 255, 255, 0.1);
     padding: 40px;
     border-radius: 15px;
-    
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
     animation: fadeIn 1s ease-in;
 }
@@ -57,7 +55,7 @@ h2 {
 .input-box select {
     width: 100%;
     padding: 12px;
-    background: transparent;
+    background: transparent; 
     border: none;
     border-bottom: 2px solid #fff;
     outline: none;
@@ -74,7 +72,7 @@ h2 {
 .input-box input:focus,
 .input-box input:valid,
 .input-box select:focus {
-    border-bottom-color: #00ffff;
+    border-bottom-color: #101212;
     transform: translateY(-5px);
 }
 
@@ -93,7 +91,15 @@ h2 {
 .input-box select:focus ~ label {
     top: -5px;
     font-size: 0.8em;
-    color: #00ffff;
+    color: #6dd0e1;
+}
+
+.input-box select:valid ~ label {
+    top: -20px;
+    font-size: 0.7em;
+    color: #0b0b0b;
+    opacity: 0; 
+    transition: all 0.3s ease;
 }
 
 button {
@@ -127,7 +133,7 @@ button:hover::before {
 
 button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(31, 31, 31, 0.8);
 }
 
 .error {
@@ -150,7 +156,7 @@ button:hover {
 .particle {
     position: absolute;
     border-radius: 50%;
-    background: rgba(0, 255, 255, 0.5);
+    background: rgba(28, 221, 221, 0.5);
     animation: float 10s infinite;
 }
 
