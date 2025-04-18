@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handball</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f9cf82, #2ecc71);
+            color: #333;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+       /* Navbar */
+.navbar {
+  top: 0;
+  width: 100%;
+  position: fixed;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index:1000;
+  /* background: black; */
+}
+
+.navbar.scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* width: 100%; */
+  z-index: 1000;
+  background: #290b1a; /* Ensures visibility */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds slight shadow */
+}
+
+.logo img {
+  height: 60px;
+}
+.hamburger {
+  font-size: 25px;
+  cursor: pointer;
+  display: none;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.nav-links li {
+  display: inline;
+}
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+.nav-links a:hover {
+  color: orange;
+}
+
+
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  hr {
+      display: none;
+  }
+  .top_bar {
+      display: none;
+  }
+  .hamburger {
+      display: block;
+      color: white;
+  }
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      background: black;
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      width: 200px;
+      padding: 10px;
+      border-radius: 5px;
+  }
+  .nav-links.active {
+      display: flex;
+  }
+  .nav-links li {
+      text-align: center;
+      padding: 10px 0;
+  }
+  .nav-links a {
+      color: white;
+      display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .top_bar {
+      font-size: 12px;
+  }
+  .card {
+      width: 90%;
+  }
+}
+
+
+        /* Header */
+        .header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .header .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(cricketbg.png);
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .header h1, .header p, .header .cta-button {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            background: #e74c3c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+       
+        /* Particle Animation */
+        #particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background: url('https://www.transparenttextures.com/patterns/green-dust.png'), #ecf0f1;
+            text-align: center;
+            position: relative;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .about h2::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: #27ae60;
+            display: block;
+            margin: 0.5rem auto;
+            animation: pulse 2s infinite;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Gallery Section */
+        .gallery1 {
+            padding: 4rem 2rem;
+            background: #fff;
+            text-align: center;
+        }
+
+        .gallery1 h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        .gallery1-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 0 2rem;
+        }
+
+        .gallery1-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .gallery1-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery1-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery1-item::after {
+            content: '\f06e';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery1-item:hover::after {
+            opacity: 0.7;
+        }
+
+        /* Testimonial Section */
+        .testimonials {
+            padding: 4rem 2rem;
+            background: url('https://www.transparenttextures.com/patterns/green-dust.png'), #2c3e50;
+            color: #fff;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 400px;
+            transition: transform 0.3s;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial span {
+            font-weight: 600;
+            color: #2ecc71;
+        }
+
+        /* Registration Form */
+        .register {
+            padding: 4rem 2rem;
+            background: #39575d;
+            text-align: center;
+            color: #fff;
+        }
+
+        .register h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        #registration-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #registration-form input, #registration-form select {
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        #registration-form input:focus, #registration-form select:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+            transform: scale(1.02);
+        }
+
+        .submit-button {
+            padding: 1rem;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #c0392b;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+       
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 3rem;
+            }
+            .header p {
+                font-size: 1.2rem;
+            }
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+
+
+        footer {
+  background-color: #581738;
+  color: white;
+  padding: 40px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+.footer-col {
+  flex: 1 1 200px;
+}
+.footer-col h3 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: cursive;
+}
+.footer-col p,
+.footer-col a,
+.footer-col li {
+  color: #bbb;
+  text-decoration: none;
+  list-style: none;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 16px;
+}
+.footer-col i {
+  margin-right: 10px;
+}
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  transition: 0.3s;
+}
+.social-icons a:hover {
+  background-color: #ff5722;
+  border-color: #ff5722;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+        .footer-col button{
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #e76138;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.footer-col button:hover {
+  background-color: white;
+  color: #531738;
+}
+.newsletter input {
+  padding: 10px;
+  width: 70%;
+  max-width: 250px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+}
+.newsletter button {
+  padding: 10px 20px;
+  background-color: #e76138;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.newsletter button:hover {
+  background-color: #e64a19;
+}
+
+.footer-bottom a {
+  color: white;
+  text-decoration: underline;
+}
+.footer-nav {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 10px;
+}
+.scroll-top {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  width: 60px;
+  height: 60px;
+  background-color: #ff5722;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.social-icons a {
+  color: white;
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  .newsletter input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  .newsletter input {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-col {
+      width: 100%;
+      text-align: center;
+  }
+}
+
+
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+
+    </style>
+</head>
+<body>
+    
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+        <img src="logo.png" alt="Presidency Logo">
+    </div>
+    <span class="hamburger">&#9776;</span>
+    <ul class="nav-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Fest</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="cafe.html">Cafes</a></li>
+        <li><a href="stationery.html">Stationery</a></li>
+        <li><a href="#">Join Quiz</a></li>
+        <li><a href="#">Healthcare</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    window.addEventListener('scroll', function() {
+        var navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+
+    document.querySelector(".hamburger").addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.toggle("active");
+    });
+  </script>
+
+
+
+    <!-- Header Section -->
+    <header class="header" id="home">
+        <div class="overlay"></div>
+        <canvas id="particles"></canvas>
+        <h1>Handball Hustle</h1>
+        <p>Join the fast-paced thrill of handball and be part of our dynamic community!</p>
+        <a href="#register" class="cta-button">Register Now</a>
+    </header>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Handball</h2>
+        <p>Handball is an exhilarating team sport that blends speed, strength, and strategy. Played by two teams of seven players on an indoor court, the goal is to throw a ball into the opponent’s goal while defending your own. With lightning-fast passes, powerful shots, and agile goalkeeping, handball is a high-energy game that demands teamwork and precision.</p>
+        <p>Originating in Europe in the early 20th century, handball has become a global sport, captivating audiences in Olympic competitions and professional leagues. Its fast-paced nature and intense physicality make every match a spectacle. Whether you’re a pivot, wing, or goalkeeper, handball offers a thrilling way to connect and compete. Join us to feel the pulse of every goal!</p>
+    </section>
+
+    <!-- Image Gallery Section -->
+    <section class="gallery1" id="gallery1">
+        <h2>Epic Moments</h2>
+        <div class="gallery1-container">
+            <div class="gallery1-item"><img src="https://images.unsplash.com/photo-1592827095305-68f21bc8dfb9" alt="Volleyball Action"></div>
+            <div class="gallery1-item"><img src="https://images.unsplash.com/photo-1594923401856-45247b0c9f75" alt="Team Play"></div>
+            <div class="gallery1-item"><img src="https://images.unsplash.com/photo-1595434685768-8a95a4f6b13b" alt="Spike Moment"></div>
+            <div class="gallery1-item"><img src="https://images.unsplash.com/photo-1605296867424-7ea8dd4d31ac" alt="Beach Volleyball"></div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonials">
+        <h2>Inspirational Handball Quotes</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+              <p>"Handball is about giving everything in every moment—there's no time to hold back."</p>
+                <span>-Mikkel Hansen </span>
+            </div>
+            <div class="testimonial">
+              <p>"The ball is small, but the heart you put into the game is huge."</p>
+                <span>-Nikola Karabatić </span>
+            </div>
+
+            <div class="testimonial">
+              <p>"In handball, trust your team, and the impossible becomes possible."</p>
+              <span>— Domagoj Duvnjak</span>
+          </div>
+
+          <div class="testimonial">
+            <p>"Every throw is a chance to change the game."</p>
+            <span>— Cristina Neagu</span>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section id="register" class="register">
+        <h2>Join Our Team</h2>
+        <form id="registration-form" action="/submit-handball-registration" method="POST" >
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="roll" placeholder="Roll" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="text"name="school" placeholder="School" required>
+            <select name="role"required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="goalkeeper">Goalkeeper</option>
+                <option value="pivot">Pivot</option>
+                <option value="wing">Wing</option>
+                <option value="back">Back</option>
+            </select>
+            <button type="submit" class="submit-button">Register</button>
+        </form>
+    </section>
+
+    
+  
+    <script>
+        // Smooth Scroll for Navigation and CTA
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Form Submission Handling
+        // document.getElementById('registration-form').addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     alert('Thank you for registering! We will contact you soon.');
+        //     e.target.reset();
+        // });
+
+        // Gallery Image Animation on Scroll
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        galleryItems.forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(50px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+
+        // Particle Animation
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        for (let i = 0; i < 100; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                vx: Math.random() * 2 - 1,
+                vy: Math.random() * 2 - 1
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const scrollPosition = window.scrollY;
+            header.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+        });
+    </script>
+
+
+<footer>
+  <div class="footer-col">
+    <h3>Get In Touch</h3>
+    <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+    <p><i class="fas fa-phone"></i> +012 345 67890</p>
+    <p><i class="fas fa-envelope"></i> info@example.com</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <div class="footer-col">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Our Services</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms & Condition</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-col">
+    <h3>Photo Gallery</h3>
+    <div class="gallery">
+      <img src="cafe.jpg" alt="gallery1">
+      <img src="cafebg.png" alt="gallery2">
+      <img src="stationery.jpg" alt="gallery3">
+      <img src="club.jpg" alt="gallery4">
+      <img src="sports.jpg" alt="gallery5">
+      <img src="health.jpg" alt="gallery6">
+    </div>
+    <button>Explore Gallery</button>
+  </div>
+
+  <div class="footer-col newsletter">
+    <h3>Newsletter</h3>
+    <p>Enter your email to get updates regularly.</p>
+    <input type="email" placeholder="Your email">
+    <button>SignUp</button>
+  </div>
+
+
+
+<div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+  <div class="footer-bottom">
+      <p>Anti Ragging | ICC | Privacy Policy | Disclaimer | Terms and Conditions | Student Grievance Redressal | Caste Based Discrimination | RTI | Feedback</p>
+      <p>&copy; 2025 All Rights Reserved by Presidency University</p>
+  </div>
+
+      <div class="footer-links">
+          <a href="#">Admissions</a>
+          <a href="#">Events</a>
+          <a href="#">Contact Us</a>
+          <a href="#">FAQs</a>
+      </div>
+      <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>© 2025 Presidency University. All rights reserved.</p>
+  </footer>
+
+
+</body>
+</html>
