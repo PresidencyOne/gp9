@@ -1,4 +1,4 @@
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
+document.getElementById('registrationForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const fullName = document.getElementById('fullName').value;
@@ -8,13 +8,14 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     const year = document.getElementById('year').value;
     const formMessage = document.getElementById('formMessage');
 
+    // Basic validation
     if (!fullName || !email || !phone || !department || !year) {
         formMessage.textContent = 'Please fill out all fields.';
         formMessage.classList.remove('success');
         return;
     }
 
-    // Basic email validation
+    // Validate email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
         formMessage.textContent = 'Please enter a valid email address.';
@@ -22,7 +23,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         return;
     }
 
-    // Basic phone validation (10 digits)
+    // Validate phone number
     const phonePattern = /^\d{10}$/;
     if (!phonePattern.test(phone)) {
         formMessage.textContent = 'Please enter a valid 10-digit phone number.';
@@ -30,10 +31,28 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         return;
     }
 
-    // Simulate form submission
-    formMessage.textContent = 'Registration successful! Welcome to Toastmasters Club!';
-    formMessage.classList.add('success');
+    // Send form data to server
+    try {
+        const response = await fetch('/submit-toastmasters-registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ fullName, email, phone, department, year }),
+        });
 
-    // Reset form
-    this.reset();
+        const result = await response.text();
+        if (response.ok) {
+            formMessage.textContent = result;
+            formMessage.classList.add('success');
+            this.reset();
+        } else {
+            formMessage.textContent = 'Failed to register. Try again later.';
+            formMessage.classList.remove('success');
+        }
+    } catch (err) {
+        console.error('❌ Error:', err);
+        formMessage.textContent = 'An error occurred. Please try again.';
+        formMessage.classList.remove('success');
+    }
 });

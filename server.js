@@ -11,6 +11,8 @@ const LostFound = require('./models/LostFound');
 const GamingRegistration = require('./models/GamingRegistration');
 const CricketRegistration = require('./models/CricketRegistration');
 const NCCRegistration = require('./models/NCCRegistration');
+const ToastmastersRegistration = require('./models/ToastmastersRegistration');
+
 
 
 
@@ -134,3 +136,18 @@ app.post('/submit-ncc-registration', async (req, res) => {
     res.status(500).send('Failed to submit form');
   }
 });
+
+
+
+app.post('/submit-toastmasters-registration', async (req, res) => {
+  try {
+    const registration = new ToastmastersRegistration(req.body);
+    await registration.save();
+    console.log('✅ Toastmasters registration saved:', registration);
+    res.send('Thanks for registering with the Toastmasters Club!');
+  } catch (err) {
+    console.error('❌ Error saving Toastmasters registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
