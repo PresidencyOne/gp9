@@ -13,6 +13,8 @@ const CricketRegistration = require('./models/CricketRegistration');
 const NCCRegistration = require('./models/NCCRegistration');
 const ToastmastersRegistration = require('./models/ToastmastersRegistration');
 const Complaint = require('./models/Complaint');
+const DanceRegistration = require('./models/DanceRegistration');
+
 
 
 
@@ -174,3 +176,19 @@ app.get('/public-complaints', async (req, res) => {
     res.status(500).send('Failed to fetch complaints');
   }
 });
+
+
+
+app.post('/submit-dance-registration', async (req, res) => {
+  try {
+    const { name, email, phone, 'dance-style': danceStyle, experience } = req.body;
+    const registration = new DanceRegistration({ name, email, phone, danceStyle, experience });
+    await registration.save();
+    console.log('✅ Dance registration saved:', registration);
+    res.send('Thanks for registering with the Dance Club!');
+  } catch (err) {
+    console.error('❌ Error saving dance registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+

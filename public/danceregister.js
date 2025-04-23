@@ -1,32 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('danceForm');
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        'dance-style': document.getElementById('dance-style').value,
+        experience: document.getElementById('experience').value
+    };
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const danceStyle = document.getElementById('dance-style').value;
+    try {
+        const res = await fetch('/submit-dance-registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
 
-        
-        if (name && email && danceStyle) {
-            alert(`Woohoo, ${name}! You're ready to dance with us! We'll contact you at ${email} soon!`);
+        if (res.ok) {
+            const text = await res.text();
+            alert(text);
             form.reset();
         } else {
-            alert('Please fill in all required fields to join the fun!');
+            alert('Failed to submit. Please try again.');
         }
-    });
-
-   
-    const inputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            input.style.transform = 'scale(1.05)';
-            input.style.backgroundColor = '#ffe6f0';
-        });
-        input.addEventListener('blur', () => {
-            input.style.transform = 'scale(1)';
-            input.style.backgroundColor = '#fff';
-        });
-    });
+    } catch (err) {
+        console.error(err);
+        alert('An error occurred while submitting the form.');
+    }
 });
