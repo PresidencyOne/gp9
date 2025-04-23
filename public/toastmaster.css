@@ -401,3 +401,25 @@ footer {
     margin-top: 20px;
     font-size: 14px;
 }
+.register {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #fff5f5;
+}
+
+.register-btn {
+  padding: 20px 40px;
+  font-size: 1.5em;
+  background: linear-gradient(135deg, #1029b4, #88d5f1);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-btn:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
