@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Complaint Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #6e7c7c, #f4f6f9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    .container {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 700px;
+      border-top: 5px solid #007bff;
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    label {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    input, textarea, select {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+    button {
+      padding: 0.8rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    button:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 0.7rem;
+      border: 1px solid #c3e6cb;
+      border-radius: 8px;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .complaints-section {
+      margin-top: 2rem;
+      width: 100%;
+    }
+    .complaint-card {
+      background: #f9f9f9;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #007bff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .complaint-card:hover {
+      transform: translateY(-5px);
+    }
+    .complaint-card h4 {
+      margin: 0 0 0.3rem;
+      color: #333;
+      font-size: 1.3rem;
+    }
+    .complaint-card p {
+      margin: 0.3rem 0;
+      color: #555;
+      font-size: 1rem;
+    }
+    .complaint-card .category {
+      font-size: 0.9rem;
+      color: #007bff;
+      font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Submit a Complaint</h2>
+    <form id="complaintForm">
+      <label for="name">Your Name (optional):</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" />
+
+      <label for="email">Your Email (optional):</label>
+      <input type="email" id="email" name="email" placeholder="john@example.com" />
+
+      <label for="category">Complaint Category:</label>
+      <select id="category" name="category" required>
+        <option value="">-- Select Category --</option>
+        <option value="hostel">Hostel</option>
+        <option value="canteen">Canteen</option>
+        <option value="academics">Academics</option>
+        <option value="security">Security</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="complaint">Complaint:</label>
+      <textarea id="complaint" name="complaint" rows="5" required placeholder="Describe your issue..."></textarea>
+
+      <label for="visibility">Who can see this complaint?</label>
+      <select id="visibility" name="visibility" required>
+        <option value="public">Visible to All</option>
+        <option value="admin">Only Admin</option>
+      </select>
+
+      <button type="submit">Submit Complaint</button>
+    </form>
+    <div id="successMsg" class="success-message" style="display: none;">
+      Complaint submitted successfully!
+    </div>
+
+    <div class="complaints-section">
+      <h2>📢 Public Complaints</h2>
+      <div id="publicComplaints"></div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("complaintForm");
+    const publicComplaintsDiv = document.getElementById("publicComplaints");
+    const successMsg = document.getElementById("successMsg");
+  
+    async function loadPublicComplaints() {
+      const res = await fetch('/public-complaints');
+      const data = await res.json();
+      displayPublicComplaints(data);
+    }
+  
+    function displayPublicComplaints(complaints) {
+      publicComplaintsDiv.innerHTML = "";
+      complaints.forEach(comp => {
+        const card = document.createElement("div");
+        card.className = "complaint-card";
+        card.innerHTML = `
+          <h4>${comp.name || "Anonymous"} <span class="category">• ${comp.category}</span></h4>
+          <p>${comp.complaint}</p>
+        `;
+        publicComplaintsDiv.appendChild(card);
+      });
+    }
+  
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+  
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        category: form.category.value,
+        complaint: form.complaint.value.trim(),
+        visibility: form.visibility.value
+      };
+  
+      const res = await fetch('/submit-complaint', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+  
+      if (res.ok && data.visibility === "public") {
+        loadPublicComplaints();
+      }
+  
+      successMsg.style.display = "block";
+      setTimeout(() => (successMsg.style.display = "none"), 4000);
+      form.reset();
+    });
+  
+    // Load complaints when page loads
+    window.onload = loadPublicComplaints;
+  </script>
+  
+</body>
+</html>

@@ -12,6 +12,7 @@ const GamingRegistration = require('./models/GamingRegistration');
 const CricketRegistration = require('./models/CricketRegistration');
 const NCCRegistration = require('./models/NCCRegistration');
 const ToastmastersRegistration = require('./models/ToastmastersRegistration');
+const Complaint = require('./models/Complaint');
 
 
 
@@ -151,3 +152,25 @@ app.post('/submit-toastmasters-registration', async (req, res) => {
   }
 });
 
+//Complaint box
+app.post('/submit-complaint', async (req, res) => {
+  try {
+    const complaint = new Complaint(req.body);
+    await complaint.save();
+    console.log('✅ Complaint saved:', complaint);
+    res.status(200).send('Complaint submitted successfully!');
+  } catch (err) {
+    console.error('❌ Complaint save error:', err);
+    res.status(500).send('Failed to submit complaint');
+  }
+});
+
+app.get('/public-complaints', async (req, res) => {
+  try {
+    const complaints = await Complaint.find({ visibility: 'public' }).sort({ createdAt: -1 });
+    res.json(complaints);
+  } catch (err) {
+    console.error('❌ Error fetching public complaints:', err);
+    res.status(500).send('Failed to fetch complaints');
+  }
+});
