@@ -15,6 +15,8 @@ const ToastmastersRegistration = require('./models/ToastmastersRegistration');
 const Complaint = require('./models/Complaint');
 const DanceRegistration = require('./models/DanceRegistration');
 const SingingRegistration = require('./models/SingingRegistration');
+const AnchorRegistration = require('./models/AnchorRegistration');
+
 
 
 
@@ -207,4 +209,19 @@ app.post('/submit-singing-registration', async (req, res) => {
     res.status(500).send('Failed to submit form');
   }
 });
+
+
+app.post('/submit-anchor-registration', async (req, res) => {
+  try {
+    const { 'full-name': fullName, email, phone, department, interest } = req.body;
+    const registration = new AnchorRegistration({ fullName, email, phone, department, interest });
+    await registration.save();
+    console.log('✅ Anchor registration saved:', registration);
+    res.send('Thanks for registering with the Anchors & Speakers Club!');
+  } catch (err) {
+    console.error('❌ Error saving anchor registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
 
