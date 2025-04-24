@@ -1,58 +1,40 @@
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('registrationForm');
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = [];
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const department = document.getElementById('department').value;
+        const skills = document.getElementById('skills').value.trim();
 
-for (let x = 0; x < columns; x++) {
-    drops[x] = Math.random() * canvas.height / fontSize;
-}
-
-function draw() {
-    ctx.fillStyle = 'rgba(13, 17, 23, 0.1)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#58a6ff';
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = chars.charAt(Math.floor(Math.random() * chars.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
+        // Basic validation
+        if (!name || !email || !phone || !department) {
+            alert('Please fill in all required fields.');
+            return;
         }
-        drops[i]++;
-    }
-}
 
-setInterval(draw, 33);
+        try {
+            const res = await fetch('/submit-coding-registration', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, phone, department, skills }),
+            });
 
-window.addEventListener('resize', () => {
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-});
-
-const form = document.getElementById('registrationForm');
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        department: formData.get('department'),
-        skills: formData.get('skills')
-    };
-    
-    
-    setTimeout(() => {
-        alert(`Thank you, ${data.name}! Your registration for the Coding Club has been received!`);
-        form.reset();
-    }, 500);
+            const message = await res.text();
+            if (res.ok) {
+                alert(message);
+                form.reset();
+            } else {
+                alert('❌ Submission failed: ' + message);
+            }
+        } catch (err) {
+            console.error('Error:', err);
+            alert('An error occurred. Please try again.');
+        }
+    });
 });

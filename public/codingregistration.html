@@ -13,7 +13,8 @@
     <div class="container">
         <div class="code-animation"></div>
         <h2>Register for Coding Club</h2>
-        <form id="registrationForm">
+        <form id="registrationForm" action="/submit-coding-registration" method="POST">
+
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -30,10 +31,10 @@
                 <label for="department">Department</label>
                 <select id="department" name="department" required>
                     <option value="">Select Department</option>
-                    <option value="CSE">Btech</option>
-                    <option value="ECE">Mtech</option>
-                    <option value="ME">MCA</option>
-                    <option value="CE">BCA</option>
+                    <option value="Btech">Btech</option>
+                    <option value="Mtech">Mtech</option>
+                    <option value="MCA">MCA</option>
+                    <option value="BCA">BCA</option>
                     <option value="Other">Other</option>
                 </select>
             </div>
