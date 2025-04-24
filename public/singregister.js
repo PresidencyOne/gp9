@@ -1,19 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Fade-in animation for form
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach((el, index) => {
-        setTimeout(() => {
-            el.style.animationDelay = `${index * 0.2}s`;
-            el.style.opacity = '1';
-        }, 100);
-    });
+form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent default form submission
 
-    // Form submission handling
-    const form = document.getElementById('registration-form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        alert(`Thank you, ${name}, for registering! We'll contact you soon.`);
-        form.reset();
-    });
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        'vocal-range': document.getElementById('vocal-range').value,
+        experience: document.getElementById('experience').value
+    };
+
+    try {
+        const res = await fetch('/submit-singing-registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        if (res.ok) {
+            alert(`Thank you, ${formData.name}, for registering!`);
+            form.reset();
+        } else {
+            alert('Something went wrong. Please try again later.');
+        }
+    } catch (err) {
+        console.error('Error submitting form:', err);
+        alert('Error submitting form');
+    }
 });

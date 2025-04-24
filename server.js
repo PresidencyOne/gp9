@@ -14,6 +14,8 @@ const NCCRegistration = require('./models/NCCRegistration');
 const ToastmastersRegistration = require('./models/ToastmastersRegistration');
 const Complaint = require('./models/Complaint');
 const DanceRegistration = require('./models/DanceRegistration');
+const SingingRegistration = require('./models/SingingRegistration');
+
 
 
 
@@ -188,6 +190,20 @@ app.post('/submit-dance-registration', async (req, res) => {
     res.send('Thanks for registering with the Dance Club!');
   } catch (err) {
     console.error('❌ Error saving dance registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
+
+app.post('/submit-singing-registration', async (req, res) => {
+  try {
+    const { name, email, phone, 'vocal-range': vocalRange, experience } = req.body;
+    const registration = new SingingRegistration({ name, email, phone, vocalRange, experience });
+    await registration.save();
+    console.log('✅ Singing registration saved:', registration);
+    res.send('Thanks for registering with the Singing Club!');
+  } catch (err) {
+    console.error('❌ Error saving singing registration:', err);
     res.status(500).send('Failed to submit form');
   }
 });
