@@ -16,6 +16,8 @@ const Complaint = require('./models/Complaint');
 const DanceRegistration = require('./models/DanceRegistration');
 const SingingRegistration = require('./models/SingingRegistration');
 const AnchorRegistration = require('./models/AnchorRegistration');
+const NSSRegistration = require('./models/NSSRegistration');
+
 
 
 
@@ -223,5 +225,19 @@ app.post('/submit-anchor-registration', async (req, res) => {
     res.status(500).send('Failed to submit form');
   }
 });
+
+app.post('/submit-nss-registration', async (req, res) => {
+  try {
+    const { name, email, phone, department, reason } = req.body;
+    const registration = new NSSRegistration({ name, email, phone, department, reason });
+    await registration.save();
+    console.log('✅ NSS registration saved:', registration);
+    res.send('Thanks for registering with the NSS Club!');
+  } catch (err) {
+    console.error('❌ Error saving NSS registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
 
 
