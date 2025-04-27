@@ -9,7 +9,8 @@ body {
 
 
 .nss {
-  background-image: url('');
+  background: 
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),  url('nss.jpg');
   background-size: cover;
   background-position: center;
   height: 70vh;
