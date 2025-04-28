@@ -19,11 +19,10 @@ const AnchorRegistration = require('./models/AnchorRegistration');
 const NSSRegistration = require('./models/NSSRegistration');
 const CodingRegistration = require('./models/CodingRegistration');
 const BasketballRegistration = require('./models/BasketballRegistration');
-
-
-
-
-
+const BadmintonRegistration = require('./models/BadmintonRegistration');
+const HandballRegistration = require('./models/HandballRegistration');
+const KabaddiRegistration = require('./models/KabaddiRegistration');
+const VolleyballRegistration = require('./models/VolleyballRegistration');
 
 
 
@@ -272,3 +271,57 @@ app.post('/submit-basketball-registration', async (req, res) => {
   }
 });
 
+app.post('/submit-badminton-registration', async (req, res) => {
+  try {
+    const { name, roll, email, phone, school, role } = req.body;
+    const registration = new BadmintonRegistration({ name, roll, email, phone, school, role });
+    await registration.save();
+    console.log('✅ Badminton registration saved:', registration);
+    res.send('Thanks for registering for Badminton Blast!');
+  } catch (err) {
+    console.error('❌ Error saving badminton registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
+
+app.post('/submit-handball-registration', async (req, res) => {
+  try {
+    const { name, roll, email, phone, school, role } = req.body;
+    const registration = new HandballRegistration({ name, roll, email, phone, school, role });
+    await registration.save();
+    console.log('✅ Handball registration saved:', registration);
+    res.send('Thanks for registering for Handball Hustle!');
+  } catch (err) {
+    console.error('❌ Error saving handball registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
+
+app.post('/submit-kabaddi-registration', async (req, res) => {
+  try {
+    const { name, roll, email, phone, school, role } = req.body;
+    const registration = new KabaddiRegistration({ name, roll, email, phone, school, role });
+    await registration.save();
+    console.log('✅ Kabaddi registration saved:', registration);
+    res.send('Thanks for registering for Kabaddi Kraze!');
+  } catch (err) {
+    console.error('❌ Error saving kabaddi registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
+
+app.post('/submit-volleyball-registration', async (req, res) => {
+  try {
+    const { name, roll, email, phone, school, role } = req.body;
+    const registration = new VolleyballRegistration({ name, roll, email, phone, school, role });
+    await registration.save();
+    console.log('✅ Volleyball registration saved:', registration);
+    res.send('Thanks for registering for Volleyball Passion!');
+  } catch (err) {
+    console.error('❌ Error saving volleyball registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
