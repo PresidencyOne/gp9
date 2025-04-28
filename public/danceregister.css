@@ -14,18 +14,18 @@ body {
 header {
     text-align: center;
     padding: 50px 20px;
-    background: linear-gradient(135deg, #ffccd5, #ffe6f0);
+    background: linear-gradient(135deg, #47d6e9, #5cc0f6);
 }
 
 header h1 {
     font-size: 3em;
-    color: #ff6f91;
+    color: #2887da;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .slogan {
     font-size: 1.5em;
-    color: #ff8ba7;
+    color: #1925c2;
     font-style: italic;
     margin-top: 10px;
 }
@@ -41,7 +41,7 @@ header h1 {
 }
 
 .form-container h2 {
-    color: #ff6f91;
+    color: #388caf;
     font-size: 2em;
     margin-bottom: 20px;
 }
@@ -59,7 +59,7 @@ header h1 {
 .form-group label {
     display: block;
     font-size: 1.1em;
-    color: #ff8ba7;
+    color: #3e86ec;
     margin-bottom: 5px;
 }
 
@@ -69,7 +69,7 @@ header h1 {
     width: 100%;
     padding: 12px;
     font-size: 1em;
-    border: 2px solid #ffccd5;
+    border: 2px solid #0cd1f4;
     border-radius: 10px;
     background-color: #fff;
     transition: border-color 0.3s ease, transform 0.3s ease;
@@ -78,7 +78,7 @@ header h1 {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #ff6f91;
+    border-color: #44a9f1;
     outline: none;
     transform: scale(1.02);
 }
@@ -90,7 +90,7 @@ header h1 {
 .submit-btn {
     padding: 15px 30px;
     font-size: 1.2em;
-    background: linear-gradient(135deg, #ff6f91, #ff8ba7);
+    background: linear-gradient(135deg, #548dd2, #607fe7);
     color: #fff;
     border: none;
     border-radius: 25px;
@@ -107,7 +107,7 @@ header h1 {
 footer {
     text-align: center;
     padding: 20px;
-    background: linear-gradient(135deg, #ffccd5, #ff6f91);
+    background: linear-gradient(135deg, #74bbea, #1c72c8);
     color: #fff;
     position: relative;
     bottom: 0;
