@@ -701,13 +701,7 @@
             });
         });
 
-        // Form Submission Handling
-        document.getElementById('registration-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for registering! We will contact you soon.');
-            e.target.reset();
-        });
-
+        
         // Gallery Image Animation on Scroll
         const galleryItems = document.querySelectorAll('.gallery-item');
         const observer = new IntersectionObserver((entries) => {
