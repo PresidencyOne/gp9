@@ -21,6 +21,7 @@ const CodingRegistration = require('./models/CodingRegistration');
 const BasketballRegistration = require('./models/BasketballRegistration');
 const BadmintonRegistration = require('./models/BadmintonRegistration');
 const HandballRegistration = require('./models/HandballRegistration');
+const KabaddiRegistration = require('./models/KabaddiRegistration');
 
 
 
@@ -292,6 +293,20 @@ app.post('/submit-handball-registration', async (req, res) => {
     res.send('Thanks for registering for Handball Hustle!');
   } catch (err) {
     console.error('❌ Error saving handball registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
+
+app.post('/submit-kabaddi-registration', async (req, res) => {
+  try {
+    const { name, roll, email, phone, school, role } = req.body;
+    const registration = new KabaddiRegistration({ name, roll, email, phone, school, role });
+    await registration.save();
+    console.log('✅ Kabaddi registration saved:', registration);
+    res.send('Thanks for registering for Kabaddi Kraze!');
+  } catch (err) {
+    console.error('❌ Error saving kabaddi registration:', err);
     res.status(500).send('Failed to submit form');
   }
 });
