@@ -18,6 +18,8 @@ const SingingRegistration = require('./models/SingingRegistration');
 const AnchorRegistration = require('./models/AnchorRegistration');
 const NSSRegistration = require('./models/NSSRegistration');
 const CodingRegistration = require('./models/CodingRegistration');
+const BasketballRegistration = require('./models/BasketballRegistration');
+
 
 
 
@@ -257,4 +259,16 @@ app.post('/submit-coding-registration', async (req, res) => {
 });
 
 
+app.post('/submit-basketball-registration', async (req, res) => {
+  try {
+    const { name, roll, email, phone, school, role } = req.body;
+    const registration = new BasketballRegistration({ name, roll, email, phone, school, role });
+    await registration.save();
+    console.log('✅ Basketball registration saved:', registration);
+    res.send('Thanks for registering for Basketball Blitz!');
+  } catch (err) {
+    console.error('❌ Error saving basketball registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
 
