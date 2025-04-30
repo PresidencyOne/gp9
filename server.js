@@ -23,6 +23,8 @@ const BadmintonRegistration = require('./models/BadmintonRegistration');
 const HandballRegistration = require('./models/HandballRegistration');
 const KabaddiRegistration = require('./models/KabaddiRegistration');
 const VolleyballRegistration = require('./models/VolleyballRegistration');
+const Newsletter = require('./models/Newsletter');
+
 
 
 
@@ -323,5 +325,23 @@ app.post('/submit-volleyball-registration', async (req, res) => {
   } catch (err) {
     console.error('❌ Error saving volleyball registration:', err);
     res.status(500).send('Failed to submit form');
+  }
+});
+
+
+
+
+//NewsLetter
+app.post('/subscribe-newsletter', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const newSubscription = new Newsletter({ email });
+    await newSubscription.save();
+    console.log('✅ Newsletter subscription saved:', email);
+    res.redirect('/'); // Redirect to homepage or show a thank you page
+  } catch (err) {
+    console.error('❌ Error saving newsletter subscription:', err);
+    res.status(500).send('Failed to subscribe');
   }
 });
