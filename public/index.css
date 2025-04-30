@@ -81,7 +81,7 @@ body {
 .logo img {
     height: 60px;
 }
-.hamburger {
+.headd {
     font-size: 25px;
     cursor: pointer;
     display: none;
@@ -136,7 +136,7 @@ body {
     .top_bar {
         display: none;
     }
-    .hamburger {
+    .headd {
         display: block;
         color: white;
     }
@@ -316,6 +316,7 @@ body {
     left: -8px;
     transform: translateY(-50%);
     z-index: 1000;
+    
     
 }
 
