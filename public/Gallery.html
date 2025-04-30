@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Gallery | Your College Name</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        .navbar {
+    width: 100%;
+    position: absolute;
+    transition: top 0.4s ease-in-out; 
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index:1000;
+}
+.navbar.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* width: 100%; */
+    z-index: 1000;
+    background: #290b1a; /* Ensures visibility */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds slight shadow */
+}
+.logo img {
+    height: 60px;
+}
+.hamburger {
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.nav-links li {
+    display: inline;
+}
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.nav-links a:hover {
+    color: orange;
+}
+
+/* Cards */
+.content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+.card {
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.card img {
+    width: 50px;
+}
+.card h3 {
+    color: #001F3F;
+}
+
+
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    hr {
+        display: none;
+    }
+    .top_bar {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+        color: white;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+    }
+    .nav-links a {
+        color: white;
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .top_bar {
+        font-size: 12px;
+    }
+    .card {
+        width: 90%;
+    }
+}.slider {
+    padding-top: -100px;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fade 12s infinite;
+}
+
+.slide:nth-child(1) { 
+    background-image: url('pu22.jpg');
+    animation-delay: 0s;
+}
+
+.slide:nth-child(2) { 
+    background-image: url('pu22.jpg');
+    animation-delay: 4s;
+}
+
+.slide:nth-child(3) { 
+    background-image: url('pu22.jpg');
+    animation-delay: 8s;
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    30% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+}
+        /* Main Content Styles */
+        main {
+            max-width: 1200px;
+            margin: 0rem 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #003366;
+        }
+        
+        .page-header h2 {
+            color: #003366;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 250px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 51, 102, 0.8);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-caption h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .gallery-caption p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Category Filters */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.2rem;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #003366;
+            color: white;
+        }
+        
+       
+footer {
+    background-color: #581738;
+    color: white;
+    padding: 60px 80px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .footer-col {
+    flex: 1 1 200px;
+  }
+  .footer-col h3 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: cursive;
+  }
+  .footer-col p,
+  .footer-col a,
+  .footer-col li {
+    color: #bbb;
+    text-decoration: none;
+    list-style: none;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 16px;
+  }
+  .footer-col i {
+    margin-right: 10px;
+  }
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  .social-icons a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    transition: 0.3s;
+  }
+  .social-icons a:hover {
+    background-color: #ff5722;
+    border-color: #ff5722;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .gallery img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  .footer-col button{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #e76138;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .footer-col button:hover {
+    background-color: white;
+    color: #531738;
+  }
+  .newsletter input {
+    padding: 10px;
+    width: 70%;
+    max-width: 250px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  .newsletter button {
+    padding: 10px 20px;
+    background-color: #e76138;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .newsletter button:hover {
+    background-color: #e64a19;
+  }
+
+
+  .footer-nav {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .scroll-top {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    width: 60px;
+    height: 60px;
+    background-color: #ff5722;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .footer-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 500px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+    .newsletter input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+    .newsletter input {
+      width: 100%;
+      margin-bottom: 10px;
+      text-align: center;
+      align-items: center;
+    }
+    .footer-col {
+        width: 100%;
+        text-align: center;
+    }
+  }
+
+
+
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.3rem 0;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Presidency Logo">
+        </div>
+        <span class="hamburger">&#9776;</span>
+        <ul class="nav-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="fests.html">Fest</a></li>
+            <li><a href="clubs.html">Clubs</a></li>
+            <li><a href="cafe.html">Cafes</a></li>
+            <li><a href="stationery.html">Stationery</a></li>
+            <li><a href="#quiz_section">Join Quiz</a></li>
+            <li><a href="#">Healthcare</a></li>
+        </ul>
+</nav>
+
+
+    <main>
+        <div class="page-header">
+            <h2>College Gallery</h2>
+            <p>Explore the vibrant life and beautiful campus of our college</p>
+        </div>
+        
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="campus">Campus</button>
+            <button class="filter-btn" data-filter="events">Events</button>
+            <button class="filter-btn" data-filter="sports">Sports</button>
+            <button class="filter-btn" data-filter="academics">Academics</button>
+        </div>
+        
+        <div class="gallery">
+            <!-- Campus Images -->
+            <div class="gallery-item" data-category="campus">
+                <img src="images/campus1.jpg" alt="College Main Building">
+                <div class="gallery-caption">
+                    <h3>Main Building</h3>
+                    <p>The iconic main building with its historic architecture</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="campus">
+                <img src="images/library.jpg" alt="College Library">
+                <div class="gallery-caption">
+                    <h3>Central Library</h3>
+                    <p>Our state-of-the-art library with 50,000+ books</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="campus">
+                <img src="images/garden.jpg" alt="College Garden">
+                <div class="gallery-caption">
+                    <h3>Botanical Garden</h3>
+                    <p>Beautifully maintained gardens for students to relax</p>
+                </div>
+            </div>
+            
+            <!-- Events Images -->
+            <div class="gallery-item" data-category="events">
+                <img src="images/festival.jpg" alt="Annual Festival">
+                <div class="gallery-caption">
+                    <h3>Annual Cultural Fest</h3>
+                    <p>Students performing at our flagship cultural event</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="events">
+                <img src="images/graduation.jpg" alt="Graduation Ceremony">
+                <div class="gallery-caption">
+                    <h3>Graduation Day</h3>
+                    <p>Celebrating our students' achievements</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="events">
+                <img src="images/workshop.jpg" alt="Workshop">
+                <div class="gallery-caption">
+                    <h3>Industry Workshop</h3>
+                    <p>Students participating in a hands-on workshop</p>
+                </div>
+            </div>
+            
+            <!-- Sports Images -->
+            <div class="gallery-item" data-category="sports">
+                <img src="images/cricket.jpg" alt="Cricket Match">
+                <div class="gallery-caption">
+                    <h3>Cricket Tournament</h3>
+                    <p>Annual inter-college cricket championship</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="sports">
+                <img src="images/athletics.jpg" alt="Athletics">
+                <div class="gallery-caption">
+                    <h3>Sports Day</h3>
+                    <p>Students competing in track and field events</p>
+                </div>
+            </div>
+            
+            <!-- Academics Images -->
+            <div class="gallery-item" data-category="academics">
+                <img src="images/lab.jpg" alt="Science Lab">
+                <div class="gallery-caption">
+                    <h3>Research Laboratory</h3>
+                    <p>Students working in our advanced research facility</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="academics">
+                <img src="images/classroom.jpg" alt="Smart Classroom">
+                <div class="gallery-caption">
+                    <h3>Smart Classroom</h3>
+                    <p>Interactive learning with modern technology</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="academics">
+                <img src="images/seminar.jpg" alt="Seminar">
+                <div class="gallery-caption">
+                    <h3>Guest Lecture</h3>
+                    <p>Eminent speaker addressing students</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="campus">
+                <img src="images/hostel.jpg" alt="Hostel">
+                <div class="gallery-caption">
+                    <h3>Student Hostels</h3>
+                    <p>Comfortable accommodation for outstation students</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-col">
+          <h3>Get In Touch</h3>
+          <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+          <p><i class="fas fa-phone"></i> +012 345 67890</p>
+          <p><i class="fas fa-envelope"></i> info@example.com</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+    
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Condition</a></li>
+          </ul>
+        </div>
+    
+        <div class="footer-col">
+          <h3>Photo Gallery</h3>
+          <div class="gallery">
+            <img src="cafe.jpg" alt="gallery1">
+            <img src="cafebg.png" alt="gallery2">
+            <img src="stationery.jpg" alt="gallery3">
+            <img src="club.jpg" alt="gallery4">
+            <img src="sports.jpg" alt="gallery5">
+            <img src="health.jpg" alt="gallery6">
+          </div>
+          <button>Explore Gallery</button>
+        </div>
+    
+        <div class="footer-col newsletter">
+            <h3>Newsletter</h3>
+            <p>Enter your email to get updates regularly.</p>
+            <form action="/subscribe-newsletter" method="POST">
+              <input type="email" name="email" placeholder="Your email" required>
+              <button type="submit">SignUp</button>
+            </form>
+          </div>
+    
+    
+    
+      <div class="scroll-top" onclick="scrollToTop()">↑</div>
+    
+    
+      <script>
+        function scrollToTop() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      </script>
+      <!-- Font Awesome Icons -->
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    
+
+    
+            <div class="footer-links">
+                <a href="#">Admissions</a>
+                <a href="#">Events</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>© 2025 Presidency University. All rights reserved.</p>
+        </footer>
+    
+    <script>
+        // Simple filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter items
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <!-- Font Awesome for icons (you can host locally or use CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>
