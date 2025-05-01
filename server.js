@@ -134,6 +134,18 @@ app.post('/submit-gaming-registration', async (req, res) => {
   }
 });
 
+app.post('/submit-nss-registration', async (req, res) => {
+  try {
+    const registration = new NSSRegistration(req.body);
+    await registration.save();
+    console.log('✅ nss registration saved:', registration);
+    res.send('Thanks for registering with the nss Club!');
+  } catch (err) {
+    console.error('❌ Error saving nss registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
@@ -232,18 +244,7 @@ app.post('/submit-anchor-registration', async (req, res) => {
   }
 });
 
-app.post('/submit-nss-registration', async (req, res) => {
-  try {
-    const { name, email, phone, department, reason } = req.body;
-    const registration = new NSSRegistration({ name, email, phone, department, reason });
-    await registration.save();
-    console.log('✅ NSS registration saved:', registration);
-    res.send('Thanks for registering with the NSS Club!');
-  } catch (err) {
-    console.error('❌ Error saving NSS registration:', err);
-    res.status(500).send('Failed to submit form');
-  }
-});
+
 
 
 
