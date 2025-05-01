@@ -1,11 +1,17 @@
-const mongoose = require("mongoose");
+// models/CricketRegistration.js
+const mongoose = require('mongoose');
 
-const gamingRegistrationSchema = new mongoose.Schema({
+const GamingRegistrationSchema = new mongoose.Schema({
   name: String,
   email: String,
-  game: String,
-  studentId: String,
-  timestamp: { type: Date, default: Date.now }
+  school: String,
+  roll: String,
+  phone: String,
+  role: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model("GamingRegistration", gamingRegistrationSchema);
+module.exports = mongoose.model('GamingRegistration', GamingRegistrationSchema);

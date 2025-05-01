@@ -106,18 +106,7 @@ app.delete('/delete/:id', async (req, res) => {
   }
 });
 
-// ✅ Route: Submit Gaming Club Registration
-app.post('/submit-gaming-registration', async (req, res) => {
-  try {
-    const registration = new GamingRegistration(req.body);
-    await registration.save();
-    console.log('✅ Gaming registration saved');
-    res.send('Form submitted successfully!');
-  } catch (err) {
-    console.error('❌ Error saving gaming registration:', err);
-    res.status(500).send('Error saving form');
-  }
-});
+
 
 
 
@@ -129,6 +118,18 @@ app.post('/submit-cricket-registration', async (req, res) => {
     res.send('Thanks for registering with the Cricket Club!');
   } catch (err) {
     console.error('❌ Error saving cricket registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+//tryy
+app.post('/submit-gaming-registration', async (req, res) => {
+  try {
+    const registration = new GamingRegistration(req.body);
+    await registration.save();
+    console.log('✅ gaming registration saved:', registration);
+    res.send('Thanks for registering with the gaming Club!');
+  } catch (err) {
+    console.error('❌ Error saving gaming registration:', err);
     res.status(500).send('Failed to submit form');
   }
 });
