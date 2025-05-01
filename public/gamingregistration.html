@@ -48,11 +48,11 @@
 .logo img {
   height: 60px;
 }
-.hamburger {
+/* .hamburger {
   font-size: 25px;
   cursor: pointer;
   display: none;
-}
+} */
 .nav-links {
   list-style: none;
   display: flex;
@@ -80,10 +80,10 @@
   .top_bar {
       display: none;
   }
-  .ham {
+  /* .ham {
       display: block;
       color: white;
-  }
+  } */
   .nav-links {
       display: none;
       flex-direction: column;
@@ -547,7 +547,7 @@
     <div class="logo">
         <img src="logo.png" alt="Presidency Logo">
     </div>
-    <span class="ham">&#9776;</span>
+    <!-- <span class="ham">&#9776;</span> -->
     <ul class="nav-links">
         <li><a href="#">About Us</a></li>
         <li><a href="#">Fest</a></li>
@@ -569,9 +569,9 @@
         }
     });
 
-    document.querySelector(".ham").addEventListener("click", function() {
-        document.querySelector(".nav-links").classList.toggle("active");
-    });
+    // document.querySelector(".ham").addEventListener("click", function() {
+    //     document.querySelector(".nav-links").classList.toggle("active");
+    // });
   </script>
 
 
