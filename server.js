@@ -205,8 +205,8 @@ app.get('/public-complaints', async (req, res) => {
 
 app.post('/submit-dance-registration', async (req, res) => {
   try {
-    const { name, email, phone, 'dance-style': danceStyle, experience } = req.body;
-    const registration = new DanceRegistration({ name, email, phone, danceStyle, experience });
+    const { name, roll, email, phone,school, 'danceStyle': danceStyle, 'experience': experience } = req.body;
+    const registration = new DanceRegistration({ name, roll, email, phone, school, danceStyle, experience });
     await registration.save();
     console.log('✅ Dance registration saved:', registration);
     res.send('Thanks for registering with the Dance Club!');
