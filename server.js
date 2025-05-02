@@ -250,8 +250,8 @@ app.post('/submit-anchor-registration', async (req, res) => {
 
 app.post('/submit-coding-registration', async (req, res) => {
   try {
-    const { name,roll, email, phone, school, skills } = req.body;
-    const registration = new CodingRegistration({ name, roll,email, phone, school, skills });
+    const { name,roll, email, phone, school, 'skills' : skills } = req.body;
+    const registration = new CodingRegistration({ name, roll, email, phone, school, skills });
     await registration.save();
     console.log('✅ Coding registration saved:', registration);
     res.send('Thanks for registering with the Coding Club!');
