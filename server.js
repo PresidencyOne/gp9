@@ -152,14 +152,15 @@ app.listen(PORT, () => {
 });
 
 
+
 app.post('/submit-ncc-registration', async (req, res) => {
   try {
     const registration = new NCCRegistration(req.body);
     await registration.save();
-    console.log('✅ NCC registration saved:', registration);
-    res.send('Thanks for registering with the NCC Club!');
+    console.log('✅ ncc registration saved:', registration);
+    res.send('Thanks for registering with the ncc Club!');
   } catch (err) {
-    console.error('❌ Error saving NCC registration:', err);
+    console.error('❌ Error saving ncc registration:', err);
     res.status(500).send('Failed to submit form');
   }
 });

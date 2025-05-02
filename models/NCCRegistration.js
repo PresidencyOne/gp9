@@ -1,13 +1,17 @@
+// models/NCCRegistration.js
 const mongoose = require('mongoose');
 
 const NCCRegistrationSchema = new mongoose.Schema({
   name: String,
   email: String,
+  school: String,
+  roll: String,
   phone: String,
-  department: String,
-  fathername: String,
-  mothername: String,
-  reason: String,
-}, { timestamps: true });
+  role: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-module.exports = mongoose.model('NCCRegistration', NCCRegistrationSchema);
+module.exports = mongoose.model('NCCRegistration',NCCRegistrationSchema);
