@@ -219,8 +219,8 @@ app.post('/submit-dance-registration', async (req, res) => {
 
 app.post('/submit-singing-registration', async (req, res) => {
   try {
-    const { name, email, phone, 'vocal-range': vocalRange, experience } = req.body;
-    const registration = new SingingRegistration({ name, email, phone, vocalRange, experience });
+    const { name, roll, email, phone, department, 'experience': experience } = req.body;
+    const registration = new SingingRegistration({ name, roll, email, phone, department, experience });
     await registration.save();
     console.log('✅ Singing registration saved:', registration);
     res.send('Thanks for registering with the Singing Club!');
