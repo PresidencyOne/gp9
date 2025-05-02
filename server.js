@@ -233,8 +233,8 @@ app.post('/submit-singing-registration', async (req, res) => {
 
 app.post('/submit-anchor-registration', async (req, res) => {
   try {
-    const { 'full-name': fullName, email, phone, department, interest } = req.body;
-    const registration = new AnchorRegistration({ fullName, email, phone, department, interest });
+    const { name,roll, email, phone, school, 'interest':interest } = req.body;
+    const registration = new AnchorRegistration({ name,roll, email, phone, school, interest });
     await registration.save();
     console.log('✅ Anchor registration saved:', registration);
     res.send('Thanks for registering with the Anchors & Speakers Club!');

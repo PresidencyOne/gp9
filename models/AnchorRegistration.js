@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
 const AnchorRegistrationSchema = new mongoose.Schema({
-  fullName: String,
+  name: String,
+  roll:Number,
   email: String,
   phone: String,
-  department: String,
+  school: String,
   interest: String
 }, { timestamps: true });
 
