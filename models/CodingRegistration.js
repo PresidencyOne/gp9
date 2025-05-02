@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 
 const CodingRegistrationSchema = new mongoose.Schema({
   name: String,
+  roll:Number,
   email: String,
   phone: String,
-  department: String,
+  school: String,
   skills: String
 }, { timestamps: true });
 
