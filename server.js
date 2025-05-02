@@ -206,8 +206,8 @@ app.get('/public-complaints', async (req, res) => {
 
 app.post('/submit-dance-registration', async (req, res) => {
   try {
-    const { name, email, phone, 'dance-style': danceStyle, experience } = req.body;
-    const registration = new DanceRegistration({ name, email, phone, danceStyle, experience });
+    const { name, roll, email, phone,school, 'danceStyle': danceStyle, 'experience': experience } = req.body;
+    const registration = new DanceRegistration({ name, roll, email, phone, school, danceStyle, experience });
     await registration.save();
     console.log('✅ Dance registration saved:', registration);
     res.send('Thanks for registering with the Dance Club!');
@@ -220,8 +220,8 @@ app.post('/submit-dance-registration', async (req, res) => {
 
 app.post('/submit-singing-registration', async (req, res) => {
   try {
-    const { name, email, phone, 'vocal-range': vocalRange, experience } = req.body;
-    const registration = new SingingRegistration({ name, email, phone, vocalRange, experience });
+    const { name, roll, email, phone, department, 'experience': experience } = req.body;
+    const registration = new SingingRegistration({ name, roll, email, phone, department, experience });
     await registration.save();
     console.log('✅ Singing registration saved:', registration);
     res.send('Thanks for registering with the Singing Club!');
@@ -234,8 +234,8 @@ app.post('/submit-singing-registration', async (req, res) => {
 
 app.post('/submit-anchor-registration', async (req, res) => {
   try {
-    const { 'full-name': fullName, email, phone, department, interest } = req.body;
-    const registration = new AnchorRegistration({ fullName, email, phone, department, interest });
+    const { name,roll, email, phone, school, 'interest':interest } = req.body;
+    const registration = new AnchorRegistration({ name,roll, email, phone, school, interest });
     await registration.save();
     console.log('✅ Anchor registration saved:', registration);
     res.send('Thanks for registering with the Anchors & Speakers Club!');
@@ -251,8 +251,8 @@ app.post('/submit-anchor-registration', async (req, res) => {
 
 app.post('/submit-coding-registration', async (req, res) => {
   try {
-    const { name, email, phone, department, skills } = req.body;
-    const registration = new CodingRegistration({ name, email, phone, department, skills });
+    const { name,roll, email, phone, school, 'skills' : skills } = req.body;
+    const registration = new CodingRegistration({ name, roll, email, phone, school, skills });
     await registration.save();
     console.log('✅ Coding registration saved:', registration);
     res.send('Thanks for registering with the Coding Club!');
