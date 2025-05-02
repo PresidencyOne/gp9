@@ -608,21 +608,18 @@
     <section id="register" class="register">
         <h2>Join Our Club</h2>
         <form id="registration-form" action="/submit-singing-registration" method="POST" >
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="text" name="roll" placeholder="Roll" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
-            <input type="text"name="school" placeholder="School" required>
-            <select name="role"required>
-                <option value="" disabled selected>Pick your vibe!</option>
-                    <option value="Bollywood">Bollywood</option>
-                    <option value="Hip-Hop">Rock</option>
-                    <option value="Contemporary">Pop</option>
-                    <option value="classical">Classical</option>
-                    <option value="Freestyle">Jazz</option>
-                    <option value="Other">Other</option>
-            </select>
-            <button type="submit" class="submit-button">Register</button>
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="text" name="roll" placeholder="Roll" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="text"name="department" placeholder="School" required>
+          <select name="experience"required>
+              <option value="" disabled selected>Experience</option>
+                  <option value="beg">Beginner</option>
+                  <option value="int">Intermediate</option>
+                  <option value="adv">Advanced</option>                  
+          </select>
+          <button type="submit" class="submit-button">Register</button>
         </form>
     </section>
 
