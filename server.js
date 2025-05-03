@@ -187,7 +187,7 @@ app.post('/submit-toastmasters-registration', async (req, res) => {
 
 //Complaint box
 app.post('/submit-complaint', async (req, res) => {
-  console.log("Incoming complaint:", req.body); // log body first
+  console.log("Incoming complaint:", req.body); 
   try {
     const { name, studentId, email, department, complaintType, complaintDetails, suggestions } = req.body;
     const complaint = new Complaint({ name, studentId, email, department, complaintType, complaintDetails, suggestions });
@@ -195,7 +195,7 @@ app.post('/submit-complaint', async (req, res) => {
     console.log('✅ Complaint saved:', complaint);
     res.send('Complaint submitted successfully.');
   } catch (err) {
-    console.error('❌ Error saving complaint:', err); // make sure to log this
+    console.error('❌ Error saving complaint:', err); 
     res.status(500).send('Error saving complaint.');
   }
 });
