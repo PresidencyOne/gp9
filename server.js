@@ -12,7 +12,6 @@ const GamingRegistration = require('./models/GamingRegistration');
 const CricketRegistration = require('./models/CricketRegistration');
 const NCCRegistration = require('./models/NCCRegistration');
 const ToastmastersRegistration = require('./models/ToastmastersRegistration');
-const Complaint = require('./models/Complaint');
 const DanceRegistration = require('./models/DanceRegistration');
 const SingingRegistration = require('./models/SingingRegistration');
 const AnchorRegistration = require('./models/AnchorRegistration');
@@ -24,6 +23,9 @@ const HandballRegistration = require('./models/HandballRegistration');
 const KabaddiRegistration = require('./models/KabaddiRegistration');
 const VolleyballRegistration = require('./models/VolleyballRegistration');
 const Newsletter = require('./models/Newsletter');
+const Complaint = require('./models/Complaint'); 
+
+
 
 
 
@@ -48,6 +50,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve images
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 
 // Multer config (for Lost & Found image upload)
 const storage = multer.diskStorage({
@@ -181,26 +187,19 @@ app.post('/submit-toastmasters-registration', async (req, res) => {
 
 //Complaint box
 app.post('/submit-complaint', async (req, res) => {
+  console.log("Incoming complaint:", req.body); // log body first
   try {
-    const complaint = new Complaint(req.body);
+    const { name, studentId, email, department, complaintType, complaintDetails, suggestions } = req.body;
+    const complaint = new Complaint({ name, studentId, email, department, complaintType, complaintDetails, suggestions });
     await complaint.save();
     console.log('✅ Complaint saved:', complaint);
-    res.status(200).send('Complaint submitted successfully!');
+    res.send('Complaint submitted successfully.');
   } catch (err) {
-    console.error('❌ Complaint save error:', err);
-    res.status(500).send('Failed to submit complaint');
+    console.error('❌ Error saving complaint:', err); // make sure to log this
+    res.status(500).send('Error saving complaint.');
   }
 });
 
-app.get('/public-complaints', async (req, res) => {
-  try {
-    const complaints = await Complaint.find({ visibility: 'public' }).sort({ createdAt: -1 });
-    res.json(complaints);
-  } catch (err) {
-    console.error('❌ Error fetching public complaints:', err);
-    res.status(500).send('Failed to fetch complaints');
-  }
-});
 
 
 

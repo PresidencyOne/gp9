@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-
-      background: linear-gradient(135deg, #abdede, #f4f6f9);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      /* padding: 2rem 1rem; */
-      scroll-behavior: smooth;
-    }
-    .navbar {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Complaint Box | Presidency University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        :root {
+            --primary-color: #8E44AD;
+            --secondary-color: #F1C40F;
+            --accent-color: #E74C3C;
+            --light-color: #F5F5F5;
+            --dark-color: #2C3E50;
+            --bg-gradient: linear-gradient(135deg, #8E44AD 0%, #3498DB 100%);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+          /* max-width: 100%; */
+        }
+              /* Navbar */
+.navbar {
   top: 0;
   width: 100%;
   position: fixed;
@@ -116,108 +126,278 @@
   }
 }
 
-    .container {
-      background: #fff;
-      padding: 3rem;
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 700px;
-      border-top: 5px solid #007bff;
-    }
-    h2 {
-      text-align: center;
-      color: #2c3e50;
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    label {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #333;
-    }
-    input, textarea, select {
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 1rem;
-      width: 100%;
-      transition: all 0.3s ease;
-    }
-    input:focus, textarea:focus, select:focus {
-      border-color: #007bff;
-      outline: none;
-    }
-    button {
-      padding: 0.8rem;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-    button:hover {
-      background: #0056b3;
-      transform: scale(1.05);
-    }
-    button:active {
-      transform: scale(0.98);
-    }
-    .success-message {
-      background: #d4edda;
-      color: #155724;
-      padding: 0.7rem;
-      border: 1px solid #c3e6cb;
-      border-radius: 8px;
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 1.1rem;
-    }
-    .complaints-section {
-      margin-top: 2rem;
-      width: 100%;
-    }
-    .complaint-card {
-      background: #f9f9f9;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-left: 4px solid #007bff;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-    .complaint-card:hover {
-      transform: translateY(-5px);
-    }
-    .complaint-card h4 {
-      margin: 0 0 0.3rem;
-      color: #333;
-      font-size: 1.3rem;
-    }
-    .complaint-card p {
-      margin: 0.3rem 0;
-      color: #555;
-      font-size: 1rem;
-    }
-    .complaint-card .category {
-      font-size: 0.9rem;
-      color: #007bff;
-      font-weight: bold;
-    }
-    @media (max-width: 600px) {
-      .container {
-        padding: 2rem;
-      }
-    }
 
-    footer {
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        
+
+        .complaint-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            margin: 0px 5%;
+        }
+        
+        .complaint-box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--bg-gradient);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        input, select, textarea {
+            width: 90%;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background-color: #fdfdfd;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2);
+            outline: none;
+            background-color: white;
+        }
+        
+        textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: var(--bg-gradient);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(142, 68, 173, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+          margin: 10% 5% 5% 5%;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s;
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--bg-gradient);
+        }
+        
+        .feature-icon {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            margin: 0 0 15px 0;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        
+        
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #4CAF50;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .confirmation h2 {
+            color: #2E7D32;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .confirmation p {
+            font-size: 1.1rem;
+            color: #1B5E20;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .confirmation-icon {
+            font-size: 4rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            animation: bounce 1s;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        .color-schemes {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.active {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 3px var(--dark-color);
+        }
+        
+        .scheme-label {
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary-color);
+            top: -50px;
+            right: -50px;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: var(--secondary-color);
+            bottom: -30px;
+            left: -30px;
+        }
+        
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .complaint-box {
+                padding: 25px 20px;
+            }
+        }
+
+  
+        footer {
   background-color: #581738;
   color: white;
   padding: 40px 20px 20px;
@@ -390,10 +570,9 @@
   margin-top: 20px;
   font-size: 14px;
 }
-  </style>
+    </style>
 </head>
 <body>
-    
   <nav class="navbar" id="navbar">
     <div class="logo">
         <img src="logo.png" alt="Presidency Logo">
@@ -425,99 +604,118 @@
     });
   </script>
 
-  <div class="container">
-    <h2>Submit a Complaint</h2>
-    <form id="complaintForm">
-      <label for="name">Your Name (optional):</label>
-      <input type="text" id="name" name="name" placeholder="John Doe" />
-
-      <label for="email">Your Email (optional):</label>
-      <input type="email" id="email" name="email" placeholder="john@example.com" />
-
-      <label for="category">Complaint Category:</label>
-      <select id="category" name="category" required>
-        <option value="">-- Select Category --</option>
-        <option value="hostel">Hostel</option>
-        <option value="canteen">Canteen</option>
-        <option value="academics">Academics</option>
-        <option value="security">Security</option>
-        <option value="other">Other</option>
-      </select>
-
-      <label for="complaint">Complaint:</label>
-      <textarea id="complaint" name="complaint" rows="5" required placeholder="Describe your issue..."></textarea>
-
-      <label for="visibility">Who can see this complaint?</label>
-      <select id="visibility" name="visibility" required>
-        <option value="public">Visible to All</option>
-        <option value="admin">Only Admin</option>
-      </select>
-
-      <button type="submit">Submit Complaint</button>
-    </form>
-    <div id="successMsg" class="success-message" style="display: none;">
-      Complaint submitted successfully!
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
     </div>
 
-    <div class="complaints-section">
-      <h2>📢 Public Complaints</h2>
-      <div id="publicComplaints"></div>
-    </div>
-  </div>
+    
 
-  <script>
-    const form = document.getElementById("complaintForm");
-    const publicComplaintsDiv = document.getElementById("publicComplaints");
-    const successMsg = document.getElementById("successMsg");
-  
-    async function loadPublicComplaints() {
-      const res = await fetch('/public-complaints');
-      const data = await res.json();
-      displayPublicComplaints(data);
-    }
-  
-    function displayPublicComplaints(complaints) {
-      publicComplaintsDiv.innerHTML = "";
-      complaints.forEach(comp => {
-        const card = document.createElement("div");
-        card.className = "complaint-card";
-        card.innerHTML = `
-          <h4>${comp.name || "Anonymous"} <span class="category">• ${comp.category}</span></h4>
-          <p>${comp.complaint}</p>
-        `;
-        publicComplaintsDiv.appendChild(card);
-      });
-    }
-  
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-  
-      const data = {
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        category: form.category.value,
-        complaint: form.complaint.value.trim(),
-        visibility: form.visibility.value
-      };
-  
-      const res = await fetch('/submit-complaint', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-  
-      if (res.ok && data.visibility === "public") {
-        loadPublicComplaints();
-      }
-  
-      successMsg.style.display = "block";
-      setTimeout(() => (successMsg.style.display = "none"), 4000);
-      form.reset();
-    });
-  
-    // Load complaints when page loads
-    window.onload = loadPublicComplaints;
-  </script>
+        
+        <div class="confirmation" id="confirmation">
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Complaint Submitted Successfully!</h2>
+            <p>Thank you for sharing your concern with us. Your complaint has been recorded and will be addressed by the appropriate department.</p>
+            <p>You will receive an update via email within 3-5 working days.</p>
+        </div>
+        
+        <div class="complaint-box">
+            <h2 style="color: var(--primary-color); margin-top: 0; margin-bottom: 10px;"><i class="fas fa-edit" style="margin-right: 10px;"></i>File a Complaint</h2>
+            <p style="margin-bottom: 30px; color: #666;">Please fill out this form to submit your complaint. All complaints will be treated confidentially.</p>
+            
+            <form id="complaintForm" action="/submit-complaint" method="POST" >
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user" style="margin-right: 8px; color: var(--primary-color);"></i>Your Name (Optional)</label>
+                    <input type="text" id="name" name="name" placeholder="If you wish to remain anonymous, leave this blank">
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentId"><i class="fas fa-id-card" style="margin-right: 8px; color: var(--primary-color);"></i>Student ID (Optional)</label>
+                    <input type="text" id="studentId" name="studentId" placeholder="Your university ID">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--primary-color);"></i>Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="We'll use this to communicate updates">
+                </div>
+                
+                <div class="form-group">
+                    <label for="department"><i class="fas fa-building" style="margin-right: 8px; color: var(--primary-color);"></i>Department Concerned</label>
+                    <select id="department" name="department">
+                        <option value="">Select Department</option>
+                        <option value="academics">Academics</option>
+                        <option value="administration">Administration</option>
+                        <option value="examinations">Examinations</option>
+                        <option value="hostel">Hostel Facilities</option>
+                        <option value="library">Library</option>
+                        <option value="sports">Sports</option>
+                        <option value="canteen">Canteen</option>
+                        <option value="transport">Transport</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="complaintType"><i class="fas fa-exclamation-triangle" style="margin-right: 8px; color: var(--primary-color);"></i>Type of Complaint</label>
+                    <select id="complaintType" name="complaintType" required>
+                        <option value="">Select Complaint Type</option>
+                        <option value="facility">Facility Issue</option>
+                        <option value="staff">Staff Behavior</option>
+                        <option value="academic">Academic Concern</option>
+                        <option value="safety">Safety Concern</option>
+                        <option value="harassment">Harassment</option>
+                        <option value="discrimination">Discrimination</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="complaintDetails"><i class="fas fa-align-left" style="margin-right: 8px; color: var(--primary-color);"></i>Complaint Details</label>
+                    <textarea id="complaintDetails" name="complaintDetails" required placeholder="Please describe your complaint in detail including date, time, location, and people involved (if applicable)"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="suggestions"><i class="fas fa-lightbulb" style="margin-right: 8px; color: var(--primary-color);"></i>Suggestions for Resolution (Optional)</label>
+                    <textarea id="suggestions" name="suggestions" placeholder="How would you like to see this issue resolved?"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-block">
+                    <i class="fas fa-paper-plane"></i> Submit Complaint
+                </button>
+            </form>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="feature-title">Confidential Process</h3>
+                <p>All complaints are treated with strict confidentiality. Your identity will not be disclosed without your explicit permission.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="feature-title">Timely Response</h3>
+                <p>We commit to acknowledging complaints within 24 hours and providing resolution updates within 3-5 working days.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Continuous Improvement</h3>
+                <p>Your feedback helps us identify systemic issues and implement improvements across the university.</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    
 
 <footer>
   <div class="footer-col">
@@ -596,6 +794,5 @@
       </div>
       <p>© 2025 Presidency University. All rights reserved.</p>
   </footer>
-  
 </body>
 </html>
