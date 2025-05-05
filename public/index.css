@@ -178,6 +178,8 @@ body {
     height: 100vh;
     overflow: hidden;
     z-index: -1;
+    background-image: url('pu1.jpg');
+    background-size: cover;
 }
 
 .slide {
@@ -187,21 +189,21 @@ body {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    animation: fade 12s infinite;
+    /* animation: fade 12s infinite; */
 }
-
+/* 
 .slide:nth-child(1) { 
-    background-image: url('pu22.jpg');
+    background-image: url('pu1.jpg');
     animation-delay: 0s;
 }
 
 .slide:nth-child(2) { 
-    background-image: url('pu22.jpg');
+    background-image: url('pu2.avif');
     animation-delay: 4s;
 }
 
 .slide:nth-child(3) { 
-    background-image: url('pu22.jpg');
+    background-image: url('pu3.jpeg');
     animation-delay: 8s;
 }
 
@@ -211,7 +213,7 @@ body {
     30% { opacity: 1; }
     40% { opacity: 0; }
     100% { opacity: 0; }
-}
+} */
 
 .Aboutinfo {
     
