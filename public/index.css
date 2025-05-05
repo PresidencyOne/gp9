@@ -443,6 +443,46 @@ body {
     position: relative;
 }
 
+
+/* Stats Section */
+
+.container1 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    position: relative;
+}
+.stats {
+    background-color: var(--white);
+    padding: 4rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 2rem;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.stat-label {
+    color: var(--light-text);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+
 .about h2 {
     font-size: 2.5rem;
     color: #2c3e50;
