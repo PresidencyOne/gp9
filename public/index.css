@@ -103,6 +103,117 @@ body {
     color: orange;
 }
 
+
+/* CSS Section */
+.pu-feature-cards {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.pu-feature-row {
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.pu-feature-card {
+    width: 100%;
+    max-width: 1000px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pu-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.pu-feature-link {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+}
+
+.pu-feature-img-container {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.pu-feature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.pu-feature-card:hover .pu-feature-img {
+    transform: scale(1.05);
+}
+
+.pu-feature-content {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background:linear-gradient(to bottom,rgb(226, 171, 204), rgb(253, 201, 241),rgb(255, 255, 255)) */
+}
+
+.pu-feature-title {
+    font-size: 1.8rem;
+    color: #0056b3;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.pu-feature-desc {
+    color: #4a5568;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.pu-feature-cta {
+    color: #0056b3;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.pu-feature-cta i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.pu-feature-link:hover .pu-feature-cta {
+    color: #003d82;
+}
+
+.pu-feature-link:hover .pu-feature-cta i {
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pu-feature-link {
+        flex-direction: column;
+    }
+    
+    .pu-feature-img-container,
+    .pu-feature-content {
+        width: 100%;
+    }
+    
+    .pu-feature-content {
+        padding: 25px;
+    }
+}
+
 /* Cards */
 .content {
     display: flex;
@@ -276,6 +387,7 @@ body {
 
 
 .notification-box {
+    display: none;
     z-index: 1;
     position:absolute;
     bottom: -2300px; 
