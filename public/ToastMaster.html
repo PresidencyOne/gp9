@@ -48,11 +48,7 @@
 .logo img {
   height: 60px;
 }
-/* .hamburger {
-  font-size: 25px;
-  cursor: pointer;
-  display: none;
-} */
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -78,10 +74,7 @@
   .top_bar {
       display: none;
   }
-  /* .ham {
-      display: block;
-      color: white;
-  } */
+ 
   .nav-links {
       display: none;
       flex-direction: column;
@@ -545,7 +538,7 @@
     <div class="logo">
         <img src="logo.png" alt="Presidency Logo">
     </div>
-    <!-- <span class="ham">&#9776;</span> -->
+   
     <ul class="nav-links">
         <li><a href="index.html">About Us</a></li>
         <li><a href="fests.html">Fest</a></li>
@@ -567,9 +560,7 @@
         }
     });
 
-    // document.querySelector(".ham").addEventListener("click", function() {
-    //     document.querySelector(".nav-links").classList.toggle("active");
-    // });
+   
   </script>
 
 
@@ -613,8 +604,17 @@
             <input type="text" name="fullName" placeholder="Full Name" required>
             <input type="text" name="roll" placeholder="Roll" required>
             <input type="email" name="email" placeholder="Email" required>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
-            <input type="text"name="department" placeholder="School" required>
+            <input type="tel" name="phone" placeholder="Phone Number" pattern="\d{10}" minlength="10" maxlength="10" required>
+            <select id="school" name="school" required>
+              <option value="" disabled selected>Select your School</option>
+              <option value="SOIS">SOIS</option>
+              <option value="SOCSE">SOCSE</option>
+              <option value="SOC">SOC</option>
+              <option value="SOM">SOM</option>
+              <option value="SOL">SOL</option>
+              <option value="SOD">SOD</option>
+              <option value="SOMS">SOMS</option>
+          </select>
             <select name="year"required>
                 <option value="" disabled selected>Select Year</option>
                     <option value="1st Year">1st Year</option>
@@ -638,14 +638,6 @@
             });
         });
 
-        // Form Submission Handling
-        // document.getElementById('registration-form').addEventListener('submit', (e) => {
-        //     e.preventDefault();
-        //     alert('Thank you for registering! We will contact you soon.');
-        //     e.target.reset();
-        // });
-
-        // Gallery Image Animation on Scroll
         const galleryItems = document.querySelectorAll('.gallery-item');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
