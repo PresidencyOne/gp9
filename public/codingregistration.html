@@ -594,10 +594,10 @@
     <section class="gallery1" id="gallery1">
         <h2>Epic Moments</h2>
         <div class="gallery1-container">
-            <div class="gallery1-item"><img src="code1.jpg" alt="Volleyball Action"></div>
-            <div class="gallery1-item"><img src="code3.jpg" alt="Team Play"></div>
-            <div class="gallery1-item"><img src="code4.jpg" alt="Spike Moment"></div>
-            <div class="gallery1-item"><img src="code6.jpg" alt="Beach Volleyball"></div>
+            <div class="gallery1-item"><img src="code2.jpg" alt="Volleyball Action"></div>
+            <div class="gallery1-item"><img src="code2.jpeg" alt="Team Play"></div>
+            <div class="gallery1-item"><img src="code3.jpg" alt="Spike Moment"></div>
+            <div class="gallery1-item"><img src="code4.jpg" alt="Beach Volleyball"></div>
         </div>
     </section>
 
@@ -610,7 +610,16 @@
             <input type="text" name="roll" placeholder="Roll" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="tel" name="phone" placeholder="Phone Number" pattern="\d{10}" minlength="10" maxlength="10" required>
-            <input type="text"name="school" placeholder="School" required>
+            <select id="school" name="school" required>
+              <option value="" disabled selected>Select your School</option>
+              <option value="SOIS">SOIS</option>
+              <option value="SOCSE">SOCSE</option>
+              <option value="SOC">SOC</option>
+              <option value="SOM">SOM</option>
+              <option value="SOL">SOL</option>
+              <option value="SOD">SOD</option>
+              <option value="SOMS">SOMS</option>
+          </select>
             <select name="skills"required>
                 <option value="" disabled selected>Choose your language</option>
                 <option value="Java">Java</option>
