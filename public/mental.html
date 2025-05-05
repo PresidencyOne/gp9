@@ -289,8 +289,8 @@
             left: 0;
             /* width: 100%; */
             z-index: 1000;
-            background: #2d0c1c; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+            background: #290b1a; /* Ensures visibility */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds slight shadow */
           }
           
           .logo img {
@@ -320,7 +320,7 @@
           
           
           
-          
+          /* RESPONSIVE DESIGN */
           @media (max-width: 768px) {
             hr {
                 display: none;
@@ -364,46 +364,8 @@
                 width: 90%;
             }
           }
-          .header {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            overflow: hidden;
-        }
-
-        .header .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url(handball.jpg);
-            background-size: cover;
-            z-index: 1;
-        }
-
-        .header h1, .header p, .header .cta-button {
-            position: relative;
-            z-index: 2;
-        }
-
-        .header h1 {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            animation: slideInDown 1s ease-out;
-        }
-
-        .header p {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            animation: slideInUp 1s ease-out;
-        }
+          
+          
 
         
 
@@ -781,7 +743,7 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-    
+      
         <div class="footer-col">
           <h3>Quick Links</h3>
           <ul>
@@ -792,7 +754,7 @@
             <li><a href="#">Terms & Condition</a></li>
           </ul>
         </div>
-    
+      
         <div class="footer-col">
           <h3>Photo Gallery</h3>
           <div class="gallery">
@@ -803,23 +765,21 @@
             <img src="sports.jpg" alt="gallery5">
             <img src="health.jpg" alt="gallery6">
           </div>
-          <button><a href="Gallery.html">Explrore Gallery</a></button>
+          <button>Explore Gallery</button>
         </div>
-    
+      
         <div class="footer-col newsletter">
-            <h3>Newsletter</h3>
-            <p>Enter your email to get updates regularly.</p>
-            <form action="/subscribe-newsletter" method="POST">
-              <input type="email" name="email" placeholder="Your email" required>
-              <button type="submit">SignUp</button>
-            </form>
-          </div>
-    
-    
-    
+          <h3>Newsletter</h3>
+          <p>Enter your email to get updates regularly.</p>
+          <input type="email" placeholder="Your email">
+          <button>SignUp</button>
+        </div>
+      
+      
+      
       <div class="scroll-top" onclick="scrollToTop()">↑</div>
-    
-    
+      
+      
       <script>
         function scrollToTop() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -827,8 +787,13 @@
       </script>
       <!-- Font Awesome Icons -->
       <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
-    
+      
+      
+        <div class="footer-bottom">
+            <p>Anti Ragging | ICC | Privacy Policy | Disclaimer | Terms and Conditions | Student Grievance Redressal | Caste Based Discrimination | RTI | Feedback</p>
+            <p>&copy; 2025 All Rights Reserved by Presidency University</p>
+        </div>
+      
             <div class="footer-links">
                 <a href="#">Admissions</a>
                 <a href="#">Events</a>
