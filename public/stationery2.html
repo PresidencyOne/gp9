@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stationary 1</title>
+  <link rel="stylesheet" href="stationery1.css">
+
+</head>
+<body>
+
+
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+           <a href="index.html"> <img src="logo.png" alt="Presidency Logo"> </a>
+        </div>
+        <span class="hamburger">&#9776;</span>
+        <ul class="nav-links">
+            <li><a href="index.html">About Us</a></li>
+            <li><a href="fests.html">Fest</a></li>
+            <li><a href="clubs.html">Clubs</a></li>
+            <li><a href="cafe.html">Cafes</a></li>
+            <li><a href="stationery.html">Stationery</a></li>
+            <li><a href="quiz1.html">Join Quiz</a></li>
+            <li><a href="healthcare.html">Healthcare</a></li>
+        </ul>
+</nav>
+
+ 
+<script>         /* This is for navbar scrolling. */
+    window.addEventListener('scroll', function() {
+        var navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+</script>
+
+
+<script>
+    document.querySelector(".hamburger").addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.toggle("active");
+    });
+</script>
+
+<img src="stationerybg.png" width="100%" height="20%">
+
+
+  <div class="container">
+    <h1>Stationary 2</h1>
+    <div class="search-box">
+      <input type="text" id="searchInput" onkeyup="filterItems()" placeholder="Search for products...">
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 5H3c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1h4v2h2v-2h6v2h2v-2h4c.6 0 1-.4 1-1V6c0-.6-.4-1-1-1zM4 16V7h16v9H4z"/></svg>
+        Basic Stationery
+      </div>
+      <div class="item-row"><div class="item-name">Notebook</div><div class="item-price">₹40</div></div>
+      <div class="item-row"><div class="item-name">Ball Pen</div><div class="item-price">₹10</div></div>
+      <div class="item-row"><div class="item-name">Gel Pen</div><div class="item-price">₹15</div></div>
+      <div class="item-row"><div class="item-name">Pencil</div><div class="item-price">₹5</div></div>
+      <div class="item-row"><div class="item-name">Eraser</div><div class="item-price">₹3</div></div>
+      <div class="item-row"><div class="item-name">Sharpener</div><div class="item-price">₹5</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h12v2H3z"/></svg>
+        Office Supplies
+      </div>
+      <div class="item-row"><div class="item-name">Stapler</div><div class="item-price">₹50</div></div>
+      <div class="item-row"><div class="item-name">Staples Pin</div><div class="item-price">₹20</div></div>
+      <div class="item-row"><div class="item-name">Glue Stick</div><div class="item-price">₹25</div></div>
+      <div class="item-row"><div class="item-name">Paper Clips (Box)</div><div class="item-price">₹15</div></div>
+      <div class="item-row"><div class="item-name">Binder Clips</div><div class="item-price">₹30</div></div>
+      <div class="item-row"><div class="item-name">File Folder</div><div class="item-price">₹35</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16v2H4zm0 4h10v2H4zm0 4h16v2H4zm0 4h10v2H4zm0 4h16v2H4z"/></svg>
+        Drawing & Art
+      </div>
+      <div class="item-row"><div class="item-name">Drawing Sheet</div><div class="item-price">₹10</div></div>
+      <div class="item-row"><div class="item-name">Chart Paper</div><div class="item-price">₹8</div></div>
+      <div class="item-row"><div class="item-name">Sketch Pen (Set)</div><div class="item-price">₹60</div></div>
+      <div class="item-row"><div class="item-name">Color Pencils</div><div class="item-price">₹55</div></div>
+      <div class="item-row"><div class="item-name">Crayons</div><div class="item-price">₹45</div></div>
+      <div class="item-row"><div class="item-name">Ruler</div><div class="item-price">₹10</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L2 7h20L12 2zm0 2.2l6.4 3.2H5.6L12 4.2zM2 9v11h20V9H2zm2 2h16v7H4v-7z"/></svg>
+        Exam Essentials
+      </div>
+      <div class="item-row"><div class="item-name">Geometry Box</div><div class="item-price">₹70</div></div>
+      <div class="item-row"><div class="item-name">Correction Pen</div><div class="item-price">₹20</div></div>
+      <div class="item-row"><div class="item-name">Whiteboard Marker</div><div class="item-price">₹25</div></div>
+    </div>
+  </div>
+
+  <a class="whatsapp-button" href="https://wa.me/919844393124" target="_blank" title="Chat with us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.11 17.62c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.66.15-.19.29-.76.95-.93 1.14-.17.19-.34.21-.63.06-.29-.15-1.23-.45-2.35-1.43-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.44.13-.58.14-.14.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.6-.91-2.2-.24-.58-.49-.5-.66-.51-.17-.01-.36-.01-.56-.01-.19 0-.51.07-.78.36s-1.02 1-1.02 2.44 1.05 2.83 1.19 3.03c.15.19 2.06 3.14 5.04 4.41.7.3 1.24.48 1.66.62.7.22 1.33.19 1.83.11.56-.08 1.72-.7 1.96-1.37.24-.68.24-1.26.17-1.37-.07-.1-.26-.16-.54-.3zM16 3c7.17 0 13 5.83 13 13 0 2.85-.93 5.49-2.49 7.61L28 29l-5.56-1.47C20.42 28.17 18.27 29 16 29c-7.17 0-13-5.83-13-13S8.83 3 16 3z"/></svg>
+  </a>
+
+  <script>
+    function filterItems() {
+      var input = document.getElementById('searchInput');
+      var filter = input.value.toLowerCase();
+      var items = document.getElementsByClassName('item-row');
+      for (var i = 0; i < items.length; i++) {
+        var name = items[i].getElementsByClassName('item-name')[0];
+        if (name.innerText.toLowerCase().indexOf(filter) > -1) {
+          items[i].style.display = '';
+        } else {
+          items[i].style.display = 'none';
+        }
+      }
+    }
+  </script>
+
+<footer>
+  <div class="footer-col">
+    <h3>Get In Touch</h3>
+    <p><i class="fas fa-map-marker-alt"></i> Itgalpur Rajanakunte, Yelahanka, Bengaluru, Karnataka 560064</p>
+    <p><i class="fas fa-phone"></i>+919022092222</p>
+    <p><i class="fas fa-envelope"></i> admission@presidencyuniversity.in</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <div class="footer-col">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Our Services</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms & Condition</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-col">
+    <h3>Photo Gallery</h3>
+    <div class="gallery">
+      <img src="cafe.jpg" alt="gallery1">
+      <img src="cafebg.png" alt="gallery2">
+      <img src="stationery.jpg" alt="gallery3">
+      <img src="club.jpg" alt="gallery4">
+      <img src="sports.jpg" alt="gallery5">
+      <img src="health.jpg" alt="gallery6">
+    </div>
+    <button>Explore Gallery</button>
+  </div>
+
+  <div class="footer-col newsletter">
+    <h3>Newsletter</h3>
+    <p>Enter your email to get updates regularly.</p>
+    <input type="email" placeholder="Your email">
+    <button>SignUp</button>
+  </div>
+
+
+
+<div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+      <div class="footer-links">
+          <a href="#">Admissions</a>
+          <a href="#">Events</a>
+          <a href="#">Contact Us</a>
+          <a href="#">FAQs</a>
+      </div>
+      <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>© 2025 Presidency University. All rights reserved.</p>
+  </footer>
+</body>
+</html>
