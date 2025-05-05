@@ -233,7 +233,7 @@ app.post('/submit-singing-registration', async (req, res) => {
 
 app.post('/submit-anchor-registration', async (req, res) => {
   try {
-    const { name,roll, email, phone, school, 'interest':interest } = req.body;
+    const { name,roll, email, phone, 'school':school, 'interest':interest } = req.body;
     const registration = new AnchorRegistration({ name,roll, email, phone, school, interest });
     await registration.save();
     console.log('✅ Anchor registration saved:', registration);
