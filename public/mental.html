@@ -270,11 +270,72 @@
             margin-top: 20px;
             font-size: 14px;
         }
+        .navbar {
+            width: 100%;
+            position: absolute;
+            transition: top 0.4s ease-in-out; 
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index:1000;
+        }
+        .navbar.scrolled {
+            position: fixed;
+            top: 0;
+            left: 0;
+            /* width: 100%; */
+            z-index: 1000;
+            background: #290b1a; /* Ensures visibility */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds slight shadow */
+        }
+        .logo img {
+            height: 60px;
+        }
+        .headd {
+            font-size: 25px;
+            cursor: pointer;
+            display: none;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li {
+            display: inline;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            color: orange;
+        }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+<!-- Navbar -->
+    <nav class="navbar" id="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="Presidency Logo">
+            </div>
+            <span class="headd">&#9776;</span>
+            <ul class="nav-links">
+                <li><a href="index.html">About Us</a></li>
+                <li><a href="fests.html">Fest</a></li>
+                <li><a href="clubs.html">Clubs</a></li>
+                <li><a href="cafe.html">Cafes</a></li>
+                <li><a href="stationery.html">Stationery</a></li>
+                <li><a href="#quiz_section">Join Quiz</a></li>
+                <li><a href="#">Healthcare</a></li>
+            </ul>
+    </nav>
+
 <body class="text-gray-800">
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
