@@ -6,14 +6,16 @@
     <title>Blossom - Presidency University Mental Wellness</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Use Inter font */
+       
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0fdf4; /* Light green background */
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
-        /* Simple fade-in animation */
+   
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -25,7 +27,7 @@
         img {
             display: block;
             max-width: 10px;
-            height:10%;
+            height:-100%;
         }
        
         .page-section {
@@ -95,11 +97,245 @@
             color: inherit;
             float: right;
         }
+
+        footer {
+            background-color: #581738;
+            color: white;
+            padding: 60px 80px 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+          }
+          .footer-col {
+            flex: 1 1 200px;
+          }
+          .footer-col h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-family: cursive;
+          }
+          .footer-col p,
+          .footer-col a,
+          .footer-col li {
+            color: #bbb;
+            text-decoration: none;
+            list-style: none;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 16px;
+          }
+          .footer-col i {
+            margin-right: 10px;
+          }
+          .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+          }
+          .social-icons a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            transition: 0.3s;
+          }
+          .social-icons a:hover {
+            background-color: #ff5722;
+            border-color: #ff5722;
+          }
+          .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+          }
+          .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+          }
+          .footer-col button{
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #e76138;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+          }
+          .footer-col button:hover {
+            background-color: white;
+            color: #531738;
+          }
+          .newsletter input {
+            padding: 10px;
+            width: 70%;
+            max-width: 250px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+          }
+          .newsletter button {
+            padding: 10px 20px;
+            background-color: #e76138;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+          }
+          .newsletter button:hover {
+            background-color: #e64a19;
+          }
+        
+          .footer-bottom a {
+            color: white;
+            text-decoration: underline;
+          }
+          .footer-nav {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 10px;
+          }
+          .scroll-top {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            width: 60px;
+            height: 60px;
+            background-color: #ff5722;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+          }
+        
+          .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+        
+          @media (max-width: 768px) {
+            .gallery {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (max-width: 500px) {
+            .gallery {
+              grid-template-columns: 1fr;
+            }
+            .newsletter input {
+              width: 100%;
+              margin-bottom: 10px;
+            }
+          }
+        
+          @media (max-width: 400px) {
+            .gallery {
+              grid-template-columns: 1fr;
+            }
+            .newsletter input {
+              width: 100%;
+              margin-bottom: 10px;
+              text-align: center;
+              align-items: center;
+            }
+            .footer-col {
+                width: 100%;
+                text-align: center;
+            }
+          }
+        
+        
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .navbar {
+            width: 100%;
+            position: absolute;
+            transition: top 0.4s ease-in-out; 
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index:1000;
+        }
+        .navbar.scrolled {
+            position: fixed;
+            top: 0;
+            left: 0;
+            /* width: 100%; */
+            z-index: 1000;
+            background: #290b1a; /* Ensures visibility */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds slight shadow */
+        }
+        .logo img {
+            height: 60px;
+        }
+        .headd {
+            font-size: 25px;
+            cursor: pointer;
+            display: none;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li {
+            display: inline;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            color: orange;
+        }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+<!-- Navbar -->
+    <nav class="navbar" id="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="Presidency Logo">
+            </div>
+            <span class="headd">&#9776;</span>
+            <ul class="nav-links">
+                <li><a href="index.html">About Us</a></li>
+                <li><a href="fests.html">Fest</a></li>
+                <li><a href="clubs.html">Clubs</a></li>
+                <li><a href="cafe.html">Cafes</a></li>
+                <li><a href="stationery.html">Stationery</a></li>
+                <li><a href="#quiz_section">Join Quiz</a></li>
+                <li><a href="#">Healthcare</a></li>
+            </ul>
+    </nav>
+
 <body class="text-gray-800">
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
@@ -111,7 +347,7 @@
             </div>
 
             <div class="mb-12 rounded-lg overflow-hidden shadow-lg hover-lift">
-                <img src="mental.jpg" alt="Peaceful campus view" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src=""; >
+                <img src="mental1.jpg" alt="Peaceful campus view" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src=""; >
             </div>
 
             <div class="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12 fade-in" style="animation-delay: 0.2s;">
@@ -126,7 +362,7 @@
                     <i class="fas fa-hand-holding-heart text-4xl text-green-600 mb-4"></i>
                     <h3 class="text-xl font-semibold text-green-800 mb-2">Our Services</h3>
                     <p class="text-gray-600">Confidential counseling, workshops, support groups, and more.</p>
-                    <a href="#services" class="mt-4 inline-block text-green-600 hover:underline">Learn More &rarr;</a>
+                    <a href="https://www.instagram.com/p/DFhyW_GS7tz/?img_index=1" class="mt-4 inline-block text-green-600 hover:underline">Learn More &rarr;</a>
                 </div>
                 <div class="bg-green-100 p-6 rounded-lg shadow-sm hover-lift fade-in" style="animation-delay: 0.6s;">
                     <i class="fas fa-calendar-alt text-4xl text-green-600 mb-4"></i>
@@ -138,7 +374,7 @@
                     <i class="fas fa-book-open text-4xl text-green-600 mb-4"></i>
                     <h3 class="text-xl font-semibold text-green-800 mb-2">Wellness Resources</h3>
                     <p class="text-gray-600">Articles, tips, and tools to support your mental health journey.</p>
-                     <a href="#resources" class="mt-4 inline-block text-green-600 hover:underline">Explore Resources &rarr;</a>
+                     <a href="https://www.cdc.gov/mental-health/caring/index.html" class="mt-4 inline-block text-green-600 hover:underline">Explore Resources &rarr;</a>
                 </div>
             </div>
         </section>
@@ -442,6 +678,80 @@
         });
 
     </script>
+    <footer>
+        <div class="footer-col">
+          <h3>Get In Touch</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Itgalpur Rajanakunte, Yelahanka, Bengaluru, Karnataka 560064</p>
+          <p><i class="fas fa-phone"></i>+919022092222</p>
+          <p><i class="fas fa-envelope"></i> admission@presidencyuniversity.in</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+    
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Condition</a></li>
+          </ul>
+        </div>
+    
+        <div class="footer-col">
+          <h3>Photo Gallery</h3>
+          <div class="gallery">
+            <img src="cafe.jpg" alt="gallery1">
+            <img src="cafebg.png" alt="gallery2">
+            <img src="stationery.jpg" alt="gallery3">
+            <img src="club.jpg" alt="gallery4">
+            <img src="sports.jpg" alt="gallery5">
+            <img src="health.jpg" alt="gallery6">
+          </div>
+          <button><a href="Gallery.html">Explrore Gallery</a></button>
+        </div>
+    
+        <div class="footer-col newsletter">
+            <h3>Newsletter</h3>
+            <p>Enter your email to get updates regularly.</p>
+            <form action="/subscribe-newsletter" method="POST">
+              <input type="email" name="email" placeholder="Your email" required>
+              <button type="submit">SignUp</button>
+            </form>
+          </div>
+    
+    
+    
+      <div class="scroll-top" onclick="scrollToTop()">↑</div>
+    
+    
+      <script>
+        function scrollToTop() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      </script>
+      <!-- Font Awesome Icons -->
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    
+            <div class="footer-links">
+                <a href="#">Admissions</a>
+                <a href="#">Events</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>© 2025 Presidency University. All rights reserved.</p>
+        </footer>
 
 </body>
 </html>
