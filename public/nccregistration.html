@@ -612,7 +612,7 @@
             <input type="text" name="name" placeholder="Full Name" required>
             <input type="text" name="roll" placeholder="Roll" required>
             <input type="email" name="email" placeholder="Email" required>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="tel" name="phone" placeholder="Phone Number" pattern="\d{10}" minlength="10" maxlength="10" required>
             <input type="text"name="school" placeholder="School" required>
             
             <button type="submit" class="submit-button">Register</button>
