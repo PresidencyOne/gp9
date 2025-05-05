@@ -349,7 +349,7 @@ body {
 .notification-box {
     z-index: 1;
     position:absolute;
-    bottom: -2300px; 
+    bottom: -2600px; 
     right: 20px;
     width: 350px;
     height: 250px;
