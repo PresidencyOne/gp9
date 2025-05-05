@@ -610,7 +610,16 @@
             <input type="text" name="roll" placeholder="Roll" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="tel" name="phone" placeholder="Phone Number" pattern="\d{10}" minlength="10" maxlength="10" required>
-            <input type="text"name="school" placeholder="School" required>
+            <select id="school" name="school" required>
+              <option value="" disabled selected>Select your School</option>
+              <option value="SOIS">SOIS</option>
+              <option value="SOCSE">SOCSE</option>
+              <option value="SOC">SOC</option>
+              <option value="SOM">SOM</option>
+              <option value="SOL">SOL</option>
+              <option value="SOD">SOD</option>
+              <option value="SOMS">SOMS</option>
+          </select>
             <select name="skills"required>
                 <option value="" disabled selected>Choose your language</option>
                 <option value="Java">Java</option>
