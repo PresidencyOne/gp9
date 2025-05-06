@@ -387,10 +387,10 @@ body {
 
 
 .notification-box {
-    display: none;
+    
     z-index: 1;
     position:absolute;
-    bottom: -2300px; 
+    bottom: -4450px; 
     right: 20px;
     width: 350px;
     height: 250px;
@@ -565,7 +565,7 @@ body {
     position: relative;
 }
 .stats {
-    background-color: var(--white);
+    background-color: rgb(255, 194, 228);
     padding: 4rem 0;
 }
 
@@ -577,6 +577,7 @@ body {
 }
 
 .stat-item {
+    border: 1px solid black;
     padding: 2rem;
 }
 

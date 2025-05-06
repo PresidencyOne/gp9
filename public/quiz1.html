@@ -23,7 +23,7 @@
         <li><a href="cafe.html">Cafes</a></li>
         <li><a href="stationery.html">Stationery</a></li>
         <li><a href="quiz1.html">Join Quiz</a></li>
-        <li><a href="#">Healthcare</a></li>
+        <li><a href="healthcare.html">Healthcare</a></li>
     </ul>
 </nav>
 
@@ -222,8 +222,10 @@ document.querySelector(".hamburger").addEventListener("click", function() {
   <div class="footer-col newsletter">
     <h3>Newsletter</h3>
     <p>Enter your email to get updates regularly.</p>
-    <input type="email" placeholder="Your email">
-    <button>SignUp</button>
+    <form action="/subscribe-newsletter" method="POST">
+      <input type="email" name="email" placeholder="Your email" required>
+      <button type="submit">SignUp</button>
+    </form>
   </div>
 
 
