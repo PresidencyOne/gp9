@@ -64,7 +64,7 @@ document.querySelector(".hamburger").addEventListener("click", function() {
     <div id="summary">
       <h2>Quiz Summary</h2>
       <div id="summary-content"></div>
-      <p class="score">Final Score: <span id="final-score">0</span> / 10</p>
+      <p class="score">Final Score: <span id="final-score">0</span> / 15</p>
       <button onclick="restartQuiz()">Restart Quiz</button>
     </div>
   </div>
@@ -76,14 +76,36 @@ document.querySelector(".hamburger").addEventListener("click", function() {
         { q: "Which data structure is used for LIFO operations?", a: ["Queue", "Stack", "Array", "Linked List"], correct: "Stack" },
         { q: "What is the worst-case complexity of Quick Sort?", a: ["O(n)", "O(n log n)", "O(n^2)", "O(log n)"], correct: "O(n^2)" },
         { q: "Which sorting algorithm has the best average-case complexity?", a: ["Bubble Sort", "Insertion Sort", "Merge Sort", "Selection Sort"], correct: "Merge Sort" },
-        { q: "Which data structure is best for implementing recursion?", a: ["Queue", "Stack", "Heap", "Graph"], correct: "Stack" }
+        { q: "Which data structure is best for implementing recursion?", a: ["Queue", "Stack", "Heap", "Graph"], correct: "Stack" },
+        { q: "What is the worst-case time complexity of Quick Sort?", a: ["O(n^2)", "O(n log n)", "O(log n)", "O(n)"], correct: "O(n^2)" },
+{ q: "Which data structure is used to implement recursion internally?", a: ["Queue", "Stack", "Array", "Linked List"], correct: "Stack" },
+{ q: "What is the time complexity of inserting an element at the beginning of a linked list?", a: ["O(1)", "O(log n)", "O(n)", "O(n log n)"], correct: "O(1)" },
+{ q: "Which traversal technique uses a queue?", a: ["Preorder", "Postorder", "Inorder", "Level Order"], correct: "Level Order" },
+{ q: "What is the best data structure to check for balanced parentheses?", a: ["Queue", "Stack", "Tree", "Graph"], correct: "Stack" },
+{ q: "Which sorting algorithm is the most efficient for a large dataset with random elements?", a: ["Bubble Sort", "Insertion Sort", "Merge Sort", "Selection Sort"], correct: "Merge Sort" },
+{ q: "Which data structure gives constant time complexity for insertion, deletion and search on average?", a: ["Array", "Linked List", "Hash Table", "Binary Search Tree"], correct: "Hash Table" },
+{ q: "Which tree is always balanced and maintains sorted order?", a: ["Binary Tree", "AVL Tree", "Heap", "Trie"], correct: "AVL Tree" },
+{ q: "What is the space complexity of Depth First Search (DFS) in a graph?", a: ["O(V+E)", "O(V)", "O(E)", "O(1)"], correct: "O(V)" },
+{ q: "Which graph traversal technique uses a queue?", a: ["DFS", "Topological Sort", "Prim's Algorithm", "BFS"], correct: "BFS" }
+
       ],
       CN: [
         { q: "What is the default subnet mask for a Class C IP address?", a: ["255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.255"], correct: "255.255.255.0" },
         { q: "Which protocol is used for secure data transmission over the internet?", a: ["HTTP", "HTTPS", "FTP", "SMTP"], correct: "HTTPS" },
         { q: "Which OSI layer is responsible for routing?", a: ["Physical", "Network", "Data Link", "Transport"], correct: "Network" },
         { q: "What is the function of the transport layer in the OSI model?", a: ["Routing", "Error Detection", "End-to-End Communication", "Data Encryption"], correct: "End-to-End Communication" },
-        { q: "Which protocol is used for email transmission?", a: ["FTP", "HTTP", "SMTP", "POP3"], correct: "SMTP" }
+        { q: "Which protocol is used for email transmission?", a: ["FTP", "HTTP", "SMTP", "POP3"], correct: "SMTP" },
+        { q: "Which layer of the OSI model is responsible for end-to-end communication?", a: ["Network", "Transport", "Data Link", "Session"], correct: "Transport" },
+{ q: "Which device operates at the Data Link layer of the OSI model?", a: ["Router", "Switch", "Hub", "Gateway"], correct: "Switch" },
+{ q: "What is the size of an IPv4 address?", a: ["64 bits", "32 bits", "128 bits", "16 bits"], correct: "32 bits" },
+{ q: "Which protocol is used to assign IP addresses dynamically?", a: ["DNS", "TCP", "DHCP", "HTTP"], correct: "DHCP" },
+{ q: "Which protocol ensures reliable data transfer?", a: ["TCP", "UDP", "IP", "FTP"], correct: "TCP" },
+{ q: "Which of the following is a connectionless protocol?", a: ["TCP", "FTP", "UDP", "HTTP"], correct: "UDP" },
+{ q: "Which topology has a single central cable connecting all nodes?", a: ["Star", "Ring", "Bus", "Mesh"], correct: "Bus" },
+{ q: "What does DNS stand for?", a: ["Dynamic Network Service", "Domain Name System", "Digital Name Server", "Data Naming Service"], correct: "Domain Name System" },
+{ q: "Which port number is used by HTTP?", a: ["443", "21", "25", "80"], correct: "80" },
+{ q: "What is the maximum length of a MAC address?", a: ["32 bits", "64 bits", "48 bits", "128 bits"], correct: "48 bits" }
+
       ]
     };
 
