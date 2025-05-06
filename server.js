@@ -23,6 +23,7 @@ const HandballRegistration = require('./models/HandballRegistration');
 const KabaddiRegistration = require('./models/KabaddiRegistration');
 const VolleyballRegistration = require('./models/VolleyballRegistration');
 const EuphoriaRegistration = require('./models/EuphoriaRegistration');
+const InvinciaRegistration = require('./models/InvinciaRegistration');
 const Newsletter = require('./models/Newsletter');
 const Complaint = require('./models/Complaint'); 
 
@@ -358,6 +359,18 @@ app.post('/submit-euphoria-registration', async (req, res) => {
     res.send('Thanks for registering in Euphoria!');
   } catch (err) {
     console.error('❌ Error saving Euphoria registration:', err);
+    res.status(500).send('Failed to submit form');
+  }
+});
+
+app.post('/submit-invincia-registration', async (req, res) => {
+  try {
+    const registration = new InvinciaRegistration(req.body);
+    await registration.save();
+    console.log('✅ Invincia registration saved:', registration);
+    res.send('Thanks for registering in Invincia!');
+  } catch (err) {
+    console.error('❌ Error saving Invincia registration:', err);
     res.status(500).send('Failed to submit form');
   }
 });
