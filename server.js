@@ -32,6 +32,7 @@ const Complaint = require('./models/Complaint');
 
 
 
+
 const app = express();
 const PORT = 3000;
 
@@ -347,3 +348,7 @@ app.post('/subscribe-newsletter', async (req, res) => {
     res.status(500).send('Failed to subscribe');
   }
 });
+
+
+
+
