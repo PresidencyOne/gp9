@@ -612,41 +612,42 @@
 
    
     <section id="register" class="register">
-        <h2>Participate Now</h2>
-        <form id="registration-form"  action="#" method="POST">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="text" name="roll" placeholder="Roll" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="tel" name="phone" placeholder="Phone Number" pattern="\d{10}" minlength="10" maxlength="10" required>
-            <select id="school" name="school" required>
-              <option value="" disabled selected>Select your School</option>
-              <option value="SOIS">SOIS</option>
-              <option value="SOCSE">SOCSE</option>
-              <option value="SOC">SOC</option>
-              <option value="SOM">SOM</option>
-              <option value="SOL">SOL</option>
-              <option value="SOD">SOD</option>
-              <option value="SOMS">SOMS</option>
-          </select>
-            <select name="skills"required>
-                <option value="" disabled selected>Place of Interest</option>
-                <option value="Solo Dance">Solo Dance</option>
-                <option value="Solo Singing">Solo Singing</option>
-                <option value="Group Singing">Group Singing</option>
-                <option value="Group Dancing">Group Dancing</option>
-                <option value="Musical Instruments">Musical Instruments</option>
-                <option value="Drama">Drama</option>
-                <option value="Art & Craft">Art & Craft</option>
-                <option value="Photography">Photography</option>
-                <option value="Sports">Sports</option>
-                <option value="Just A Minute">Just A Minute</option>
-                <option value="Meme">Meme</option>
-                <option value="Short Film Making">Short Film Making</option>
-                <option value="Debate">Debate</option>
-            </select>
-            <button type="submit" class="submit-button">Register</button>
-        </form>
-    </section>
+      <h2>Join Our Team</h2>
+      <form id="registration-form" action="/submit-euphoria-registration" method="POST" >
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="text" name="roll" placeholder="Roll" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Phone Number" pattern="\d{10}" minlength="10" maxlength="10" required>
+          <select id="school" name="school" required>
+            <option value="" disabled selected>Select your School</option>
+            <option value="SOIS">SOIS</option>
+            <option value="SOCSE">SOCSE</option>
+            <option value="SOC">SOC</option>
+            <option value="SOM">SOM</option>
+            <option value="SOL">SOL</option>
+            <option value="SOD">SOD</option>
+            <option value="SOMS">SOMS</option>
+        </select>
+        <select name="skills"required>
+          <option value="" disabled selected>Place of Interest</option>
+          <option value="Solo Dance">Solo Dance</option>
+          <option value="Solo Singing">Solo Singing</option>
+          <option value="Group Singing">Group Singing</option>
+          <option value="Group Dancing">Group Dancing</option>
+          <option value="Musical Instruments">Musical Instruments</option>
+          <option value="Drama">Drama</option>
+          <option value="Art & Craft">Art & Craft</option>
+          <option value="Photography">Photography</option>
+          <option value="Sports">Sports</option>
+          <option value="Just A Minute">Just A Minute</option>
+          <option value="Meme">Meme</option>
+          <option value="Short Film Making">Short Film Making</option>
+          <option value="Debate">Debate</option>
+      </select>
+          <button type="submit" class="submit-button">Register</button>
+      </form>
+  </section>
+
 
     
   
